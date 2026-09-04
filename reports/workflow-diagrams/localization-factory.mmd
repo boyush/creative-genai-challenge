@@ -1,0 +1,48 @@
+flowchart LR
+  classDef implemented fill:#d4edda,stroke:#28a745,color:#14532d;
+  classDef humangate fill:#fff3cd,stroke:#d39e00,color:#664d03;
+  classDef external fill:#cfe2ff,stroke:#0d6efd,color:#052c65;
+  classDef future fill:#eeeeee,stroke:#888888,stroke-dasharray: 4 3,color:#555555;
+
+  subgraph LEGEND["Legend"]
+    direction LR
+    L1["IMPLEMENTED"]:::implemented
+    L2["HUMAN GATE"]:::humangate
+    L3["EXTERNAL AI/MEDIA"]:::external
+    L4["FUTURE / PRODUCTION"]:::future
+  end
+
+  AEN["Approved English Challenger<br/>final/A_EN.mp4"]:::implemented
+  TR["Timestamped Transcript<br/>Gemini, segment-level"]:::external
+  TX["Translation DE / FR / KO<br/>Gemini, claims/amounts preserved exactly"]:::external
+  VR["Voice Strategy / Provider Routing<br/>Chatterbox cloned-voice → REJECTED (too fast)<br/>ElevenLabs Dubbing v2 → REJECTED (forced duration, KO leakage)<br/>ElevenLabs multilingual TTS, native voice → SELECTED"]:::implemented
+  NA["Natural Target-Language Audio<br/>ElevenLabs multilingual TTS"]:::external
+  LS["Selective Lip-sync / Reface<br/>fal.ai sync-lipsync v2 pro —<br/>ONLY segments where speaker visibly talks"]:::external
+  CAP["Retimed Burned-in Captions<br/>PIL-rendered PNG overlay"]:::implemented
+  COMP["Composition<br/>src/compose.py + FFmpeg"]:::implemented
+  TQA2["Technical QA<br/>src/qa.py — codec / res / decode / duration"]:::implemented
+  LQA["Language / Claim QA<br/>full-file STT verification"]:::external
+  NOTE3["Technical PASS does NOT imply<br/>perceptual PASS — proven by A_DE v1"]:::humangate
+  HQA2["Human Perceptual QA<br/>native-speaker review"]:::humangate
+  DEC2{"Passed human QA?"}:::humangate
+  TRG["Targeted Regeneration<br/>only the failed segment(s)"]:::implemented
+  APP["Approved Localized Asset<br/>final/A_DE_v2, A_FR_v4, A_KO_v4"]:::implemented
+
+  subgraph SIDE["Persistent Sidecars"]
+    direction LR
+    ST["State / Checkpoints<br/>reports/A_*_build_state.json"]:::implemented
+    CA["Cache<br/>skip any stage whose output already exists"]:::implemented
+    RE["Retries<br/>bounded retry + backoff per provider call"]:::implemented
+    LI["Lineage<br/>reports/A_*_lineage.json"]:::implemented
+  end
+
+  AEN --> TR --> TX --> VR --> NA --> LS --> CAP --> COMP --> TQA2 --> LQA --> HQA2 --> DEC2
+  TQA2 -.- NOTE3
+  DEC2 -->|"pass"| APP
+  DEC2 -->|"fail"| TRG --> COMP
+
+  SIDE -.->|"backs"| TX
+  SIDE -.->|"backs"| NA
+  SIDE -.->|"backs"| LS
+  SIDE -.->|"backs"| COMP
+  SIDE -.->|"backs"| TRG

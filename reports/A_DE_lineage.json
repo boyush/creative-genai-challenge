@@ -1,0 +1,34 @@
+{
+  "asset": "A_DE",
+  "parent": "final/A_EN.mp4",
+  "versions": [
+    {
+      "version": "v1",
+      "file": "final/A_DE.mp4",
+      "status": "current_production_asset",
+      "human_review_decision": "human_qa_failed",
+      "human_review_decision_date": "2026-09-03",
+      "provider": "Chatterbox (per-segment TTS) + fal.ai lip-sync, deterministic ffmpeg compose",
+      "build_manifest": "reports/A_DE_dub_manifest.json",
+      "build_state": "reports/A_DE_build_state.json",
+      "translation": "reports/A_DE_translation.json",
+      "note": "CLAUDE.md records this asset as QA-passed and frozen at original build time (2026-09-02). This lineage entry records a subsequent human review decision (2026-09-03) that judged the ElevenLabs sample materially better and marked v1 as failed for W3 purposes. The discrepancy between the original pass and this later fail is recorded here rather than silently overwritten; final/A_DE.mp4 itself has NOT been modified or deleted."
+    },
+    {
+      "version": "v2",
+      "file": "final/A_DE_v2.mp4",
+      "review_copy": "review/A_DE_v2.mp4",
+      "status": "human_qa_approved",
+      "human_review_decision": "human_qa_approved",
+      "human_review_decision_date": "2026-09-03",
+      "human_review_note": "Approved as perceptually acceptable for the social-ad context. The measured ~1.49x speech-rate signal (see reports/A_DE_v2_elevenlabs.json localization_qa_automated.speech_rate) was reviewed and accepted, not treated as disqualifying.",
+      "provider": "ElevenLabs Dubbing (audio only) + original final/A_EN.mp4 video track, deterministic ffmpeg remux/caption compose",
+      "build_report": "reports/A_DE_v2_elevenlabs.json",
+      "captions": "reports/A_DE_v2_captions.json",
+      "dubbing_id": "ty9pvamkoliut6kMiJLr",
+      "promoted_to": "final/A_DE_v2.mp4",
+      "note": "Promoted to final/ as a NEW file (final/A_DE_v2.mp4), not by overwriting final/A_DE.mp4. final/A_DE.mp4 (v1) is preserved unmodified as prior evidence."
+    }
+  ],
+  "promotion_policy": "v2 promoted to final/A_DE_v2.mp4 (new file) per explicit human PASS decision on 2026-09-03. final/A_DE.mp4 (v1) was deliberately NOT overwritten -- it is retained as v1 evidence per instruction. Any future decision to make v2 the sole/canonical A_DE asset (e.g. renaming over final/A_DE.mp4) would require a separate explicit instruction; this record does not imply that step happened."
+}

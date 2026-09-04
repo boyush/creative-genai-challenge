@@ -1,0 +1,84 @@
+{
+  "purpose": "Full A_KO build using the validated/approved French architecture (natural per-segment TTS + adaptive timing + selective lip-sync), replacing the rejected Dubbing v2 approach which had confirmed English/nonsense leakage and forced-timing compression.",
+  "status": "human_review_pending",
+  "architecture": "Existing Gemini Korean translation (reports/A_KO_translation.json, reused verbatim, no new Gemini calls) -> ElevenLabs native Korean TTS (per-segment, natural duration) -> adaptive video timing per segment (loop real motion, no freeze-holds) -> fal.ai lip-sync on visible-speaking segments -> burned-in Korean captions -> concat with tail fix -> QA.",
+  "voice": {
+    "provider": "ElevenLabs Text-to-Speech (not Dubbing v2)",
+    "model_id": "eleven_multilingual_v2",
+    "voice_id": "f2lXVdK3ZBbavHW9BpNk",
+    "voice_name": "Minsoo - Natural, Friendly & Clear (ko-KR Voice Library, standard accent, young male, social_media use-case; not a clone of the source speaker)",
+    "voice_settings": {"stability": 0.5, "similarity_boost": 0.75, "style": 0.3, "use_speaker_boost": true},
+    "selection_rationale": "Same selection method as the approved French voice (Yann): searched ElevenLabs shared Voice Library for language=ko, gender=male, picked the entry whose use_case/description best matched natural conversational social-ad delivery over narration/audiobook style."
+  },
+  "per_segment_generation": {
+    "num_segments": 23,
+    "source_of_text": "reports/A_KO_translation.json localized_text, unchanged",
+    "assets_persisted": "assets/generated/challenger_A/ko_v3/tts/seg_NN.mp3 (checkpointed)",
+    "total_original_dialogue_duration_sec": 50.1,
+    "total_natural_korean_duration_sec": 60.6,
+    "no_time_compression_applied": true
+  },
+  "video_adaptation": {
+    "method_non_lipsync_segments": "Original segment footage looped (ffmpeg -stream_loop, real motion, no static freeze) when natural Korean audio needed more time than the original English segment; trimmed when shorter.",
+    "method_lipsync_segments": "fal.ai sync-lipsync v2 pro with sync_mode='loop' -- model extends/loops source video to match natural Korean audio duration while generating matching mouth movement.",
+    "freeze_holds_used": false
+  },
+  "lipsync": {
+    "provider": "fal.ai",
+    "model": "fal-ai/sync-lipsync/v2/pro",
+    "sync_mode": "loop",
+    "segments": [2, 7, 14, 20, 21],
+    "results": {
+      "2": {"target_sec": 3.62, "output_sec": 3.67},
+      "7": {"target_sec": 2.09, "output_sec": 2.13, "note": "1 transient network read-timeout retry, succeeded on 2nd attempt"},
+      "14": {"target_sec": 2.23, "output_sec": 2.27},
+      "20": {"target_sec": 2.41, "output_sec": 2.47, "note": "1 transient network connect-timeout retry, succeeded on 2nd attempt"},
+      "21": {"target_sec": 3.25, "output_sec": 3.30}
+    },
+    "audio_source_confirmation": "Each lip-sync call's audio_url was the segment's own Korean TTS audio, uploaded from assets/generated/challenger_A/ko_v3/tts/seg_NN.mp3 -> aac. Final compose re-muxes with -map 1:a from that same fal output only -- original English audio cannot have re-entered the mix for these 5 segments.",
+    "persisted": "assets/generated/challenger_A/ko_v3/lipsync/seg_NN_lipsynced.mp4, checkpointed before compose."
+  },
+  "tail_fix_applied_proactively": {
+    "reason": "The French build discovered the source tail (final/A_EN.mp4 50.1-57.4547s) contains real spoken English ('All right, I'm getting it') plus the branded FREECASH end-card graphic. Applied the same fix from the start for Korean rather than rediscovering it: muted the English-speech window (relative 0.3-1.85s into the tail clip, i.e. absolute ~50.4-51.95s) via ffmpeg volume=0 gating, leaving the end-card visual and its ambience/music fully intact.",
+    "end_card_preserved": true,
+    "no_translation_of_tail_line": true,
+    "verification": "Full-file STT on the assembled A_KO_v3.mp4 confirms the tail now ends in only a non-speech '[효과음]' (sound-effect) tag, no English words."
+  },
+  "captions": {
+    "text_source": "reports/A_KO_translation.json localized_text, unchanged",
+    "timing": "Captions burned per-segment onto each segment's own final-duration clip, so timing is exact to that segment's actual natural Korean audio.",
+    "style": "Same font/placement/black-bar style as all prior Challenger A localizations."
+  },
+  "technical_qa": {
+    "playable": true, "clean_full_decode": true, "video_codec": "h264", "audio_codec": "aac",
+    "resolution": "1080x1920", "audio_sample_rate": 48000, "audio_channels": 2,
+    "duration_sec": 68.33,
+    "audio_level_check": {"mean_volume_db": -17.0, "max_volume_db": -3.8}
+  },
+  "localization_qa_automated_fresh_full_stt": {
+    "method": "Full-file STT (Scribe v2, word timestamps, language_code=ko) on the entire assembled A_KO_v3.mp4.",
+    "detected_language_code": "kor", "detected_language_probability": 1.0,
+    "monetary_check": {"result": "PASS", "detail": "'$43 벌었지' (43 dollars earned) confirmed in the fresh full-video transcript, matching reports/A_KO_translation.json id14 exactly."},
+    "english_leakage_check": {
+      "result": "PASS -- 0 hits",
+      "detail": "Keyword-stopword scan across all 128 recognized words found zero English hits. Specifically checked for, and did NOT find, either of the two nonsensical English sentences that were confirmed present in the rejected Dubbing v2 build ('insurance society shows with me free cash is true' and 'When your slime bursts, you search the restoration') -- neither phrase, nor any fragment of it, appears anywhere in this transcript. The two regions that failed previously in the old Dubbing v2 timeline correspond in content to segments 2 and 14-15 here, both of which transcribe cleanly as correct Korean."
+    },
+    "duplicated_dialogue_check": {"result": "PASS", "detail": "Segment 22's Korean line transitions directly into the non-speech end-card sound effect, no trailing English restatement (unlike the French tail before its fix)."},
+    "caption_language_check": "All 23 burned captions confirmed Korean by construction, taken directly from reports/A_KO_translation.json."
+  },
+  "lipsync_integrity": {
+    "result": "PASS", "detail": "All 5 intended visible-speaking segments (2,7,14,20,21) use their fal.ai lip-sync output; the other 18 segments use natural TTS audio without lip-sync, per the same selection rule as the French and German builds."
+  },
+  "perceptual_quality": {
+    "status": "NOT_EVALUATED_BY_CLAUDE",
+    "note": "Pronunciation naturalness, lip-sync visual quality, and Korean word-segmentation caption-boundary precision (captions are built per-segment to exact segment duration here, so this is less of a concern than the earlier Dubbing v2 STT-anchored retiming approach, but still worth a listen) are not auto-approved -- human review required."
+  },
+  "scope_confirmation": {
+    "de_fr_touched": false,
+    "challenger_B_or_C_touched": false,
+    "new_gemini_calls_made": false,
+    "chatterbox_higgsfield_replicate_heygen_used": false,
+    "additional_provider_experimentation": false,
+    "final_A_KO_or_dubbingv2_overwritten": false
+  }
+}

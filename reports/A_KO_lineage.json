@@ -1,0 +1,73 @@
+{
+  "output": "final/A_KO.mp4",
+  "parent": "final/A_EN.mp4",
+  "target_language": "Korean",
+  "translation_source": "reports/A_EN_transcript.json",
+  "translation_file": "reports/A_KO_translation.json",
+  "dub_manifest": "reports/A_KO_dub_manifest.json",
+  "reference_voice_url_fal": "https://v3b.fal.media/files/b/0aa8d194/9oq6YqAAuOrxZyl2jhINz_reference_voice.wav",
+  "lipsync_segment_ids": [
+    2,
+    7,
+    14,
+    20,
+    21
+  ],
+  "no_retranscription": true,
+  "no_a_en_a_de_rerender": true,
+  "no_replicate": true,
+  "tts_concurrency": 4,
+  "lipsync_concurrency": 2,
+  "qa": {
+    "file_exists": true,
+    "resolution": "1080,1920",
+    "video_codec": "h264",
+    "audio_codec": "aac",
+    "fps": "30/1",
+    "duration_seconds": 64.633333,
+    "full_decode_clean": true,
+    "full_decode_stderr": "",
+    "pass": true
+  },
+  "v2": {
+    "file": "review/A_KO_v2.mp4",
+    "status": "human_qa_failed",
+    "human_review_decision": "human_qa_failed",
+    "human_review_decision_date": "2026-09-03",
+    "human_review_note": "Rejected: contained confirmed English/nonsense leakage (two grammatical English sentences embedded in the Korean audio, at ~4.5-6.8s and ~32.0-33.4s) and inherited the same source-duration-forcing/timing-compression behavior identified and rejected during French debugging (Dubbing v2's automatic mode forces output duration to match source video length regardless of natural target-language pacing). NOT patched -- superseded entirely by the v3 architecture rebuild.",
+    "provider": "ElevenLabs Dubbing (audio only) + original final/A_EN.mp4 video track",
+    "dubbing_id": "xAh8pFIkE3hxjq8DwY0C",
+    "build_report": "reports/A_KO_v2_elevenlabs.json",
+    "captions": "reports/A_KO_v2_captions.json",
+    "note": "Not promoted to final/. v1 (final/A_KO.mp4, above) and v2 preserved unmodified as failure/iteration evidence."
+  },
+  "v3": {
+    "file": "review/A_KO_v3.mp4",
+    "status": "human_qa_failed",
+    "human_review_decision": "human_qa_failed_caption_font_only",
+    "human_review_decision_date": "2026-09-03",
+    "human_review_note": "Localization content/audio (translation, native Korean TTS, natural timing, selective lip-sync, tail fix) confirmed VALID and not in question. QA failed for a single isolated defect: Korean captions rendered as square/tofu glyphs because the caption renderer used Arial Black (no Hangul coverage). Not a content or audio problem -- surgical font-only repair authorized instead of any regeneration.",
+    "provider": "ElevenLabs multilingual TTS (per-segment, natural duration, voice_id f2lXVdK3ZBbavHW9BpNk 'Minsoo', native ko-KR Voice Library voice, no source-voice cloning) + adaptive video timing (loop real motion, no freeze-holds) + fal.ai sync-lipsync v2 pro (segments 2,7,14,20,21, sync_mode=loop) + burned Korean captions (broken font) + proactive tail fix (FREECASH end-card preserved, confirmed English tail dialogue muted from the start based on the French discovery)",
+    "build_report": "reports/A_KO_v3.json",
+    "fresh_full_video_stt_qa": "PASS on all content/audio checks: Korean throughout (100% confidence), zero English leakage (0/128 words -- specifically confirmed absence of both nonsense English sentences that failed v2), zero duplicated dialogue, $43 preserved exactly, all 5 lip-sync outputs used correctly, FREECASH end-card preserved, 1080x1920 H.264/AAC, clean full decode. Duration: 68.33s.",
+    "known_defect": "Caption font (Arial Black) has no Hangul glyph coverage -- captions render as tofu/square boxes. FIXED in v4.",
+    "note": "Not promoted to final/. v1 (final/A_KO.mp4) and v2 (review/A_KO_v2.mp4) both preserved unmodified."
+  },
+  "v4": {
+    "file": "final/A_KO_v4.mp4",
+    "review_copy": "review/A_KO_v4.mp4",
+    "status": "human_qa_approved",
+    "human_review_decision": "human_qa_approved",
+    "human_review_decision_date": "2026-09-03",
+    "promoted_to": "final/A_KO_v4.mp4",
+    "frozen": true,
+    "provider": "Identical content/audio to v3 (byte-for-byte verified via full audio-track comparison). Only change: captions re-rendered using AppleSDGothicNeo.ttc (Apple SD Gothic Neo ExtraBold, index 14) instead of Arial Black -- a pre-installed macOS system font with full Hangul coverage, no download needed.",
+    "build_report": "reports/A_KO_v4.json",
+    "verification": "Audio track of v4 byte-compared identical to v3's audio track (proves TTS/lip-sync/tail truly untouched). Real frames extracted from the assembled v4 video and visually inspected: Hangul renders correctly, no tofu, mixed Hangul+Latin+numeral text renders cleanly, UI/payment-proof areas remain unobstructed. Fresh full-video STT re-confirms Korean 100%, zero English leakage, $43 present -- consistent with the unchanged audio.",
+    "duration_sec": 68.333333,
+    "duration_matches_v3": true,
+    "paid_calls_made": false,
+    "not_evaluated": "Korean pronunciation naturalness and lip-sync perceptual quality remain human-review gates, unchanged from v3 since content/audio is identical.",
+    "note": "Not promoted to final/. v1, v2, and v3 all preserved unmodified."
+  }
+}

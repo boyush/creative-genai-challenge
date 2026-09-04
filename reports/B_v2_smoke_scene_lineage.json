@@ -1,0 +1,61 @@
+{
+  "compose": {
+    "manifest": "manifests/scenes/challenger_B_v2.json",
+    "output": "state/smoke/B_EN_v2_smoke.mp4",
+    "allow_paid_call": false,
+    "segments": [
+      {
+        "id": "generated_hook",
+        "kind": "generated",
+        "resolved_via": "cache",
+        "resolved_source": "assets/generated/challenger_B_v2/hook_gen_v2.mp4",
+        "in": 0.0,
+        "out": 3.162667,
+        "duration": 3.163
+      },
+      {
+        "id": "real_proof_body",
+        "kind": "source",
+        "resolved_via": "source",
+        "resolved_source": "input/winner_01.mp4",
+        "in": 4.8,
+        "out": 59.0,
+        "duration": 54.2
+      }
+    ],
+    "paid_calls_made": 0
+  },
+  "qa": {
+    "technical": {
+      "path": "state/smoke/B_EN_v2_smoke.mp4",
+      "file_exists": true,
+      "non_zero_size": true,
+      "duration_seconds": 57.266667,
+      "resolution": "1080,1920",
+      "video_codec": "h264",
+      "audio_codec": "aac",
+      "audio_present": true,
+      "fps": "30/1",
+      "full_decode_clean": true,
+      "full_decode_stderr": "",
+      "checks": {
+        "file_exists": true,
+        "non_zero_size": true,
+        "has_video_stream": true,
+        "has_audio_stream": true,
+        "full_decode_clean": true,
+        "resolution_matches": true,
+        "video_codec_matches": true,
+        "audio_codec_matches": true,
+        "duration_min_ok": true,
+        "duration_max_ok": true
+      },
+      "pass": true
+    },
+    "perceptual": {
+      "status": "requires_human_review",
+      "automated": false,
+      "note": "Perceptual/creative/native-language QA must be performed by a human reviewer. This pipeline does not compute a pass/fail for creative quality."
+    }
+  }
+}

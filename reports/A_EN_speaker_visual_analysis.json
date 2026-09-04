@@ -1,0 +1,143 @@
+{
+  "num_distinct_voices": 2,
+  "classifications": [
+    {
+      "id": 0,
+      "onscreen_mouth_speaking_this_line": false,
+      "visual_content": "creator_talking_head",
+      "note": "Female voice off-screen while male creator eats on camera."
+    },
+    {
+      "id": 1,
+      "onscreen_mouth_speaking_this_line": false,
+      "visual_content": "screenshot_overlay",
+      "note": "Female voice off-screen with wallet app screenshot overlay."
+    },
+    {
+      "id": 2,
+      "onscreen_mouth_speaking_this_line": true,
+      "visual_content": "creator_talking_head",
+      "note": "Male creator speaks directly to camera."
+    },
+    {
+      "id": 3,
+      "onscreen_mouth_speaking_this_line": false,
+      "visual_content": "creator_talking_head",
+      "note": "Off-screen female voice over male creator visual."
+    },
+    {
+      "id": 4,
+      "onscreen_mouth_speaking_this_line": false,
+      "visual_content": "creator_talking_head",
+      "note": "Off-screen female voice while creator listens."
+    },
+    {
+      "id": 5,
+      "onscreen_mouth_speaking_this_line": false,
+      "visual_content": "creator_talking_head",
+      "note": "Off-screen female voice continuing commentary."
+    },
+    {
+      "id": 6,
+      "onscreen_mouth_speaking_this_line": false,
+      "visual_content": "creator_talking_head",
+      "note": "Off-screen female voice finishes her point."
+    },
+    {
+      "id": 7,
+      "onscreen_mouth_speaking_this_line": true,
+      "visual_content": "creator_talking_head",
+      "note": "Male creator responds on camera."
+    },
+    {
+      "id": 8,
+      "onscreen_mouth_speaking_this_line": true,
+      "visual_content": "screenshot_overlay",
+      "note": "Male creator speaks with Trustpilot screenshot overlay."
+    },
+    {
+      "id": 9,
+      "onscreen_mouth_speaking_this_line": true,
+      "visual_content": "screenshot_overlay",
+      "note": "Male creator continues speaking with screen overlay."
+    },
+    {
+      "id": 10,
+      "onscreen_mouth_speaking_this_line": true,
+      "visual_content": "gameplay_footage",
+      "note": "Male creator speaks with gameplay overlay on top half."
+    },
+    {
+      "id": 11,
+      "onscreen_mouth_speaking_this_line": true,
+      "visual_content": "gameplay_footage",
+      "note": "Male creator continues explanation over gameplay footage."
+    },
+    {
+      "id": 12,
+      "onscreen_mouth_speaking_this_line": false,
+      "visual_content": "creator_talking_head",
+      "note": "Off-screen female voice asks question."
+    },
+    {
+      "id": 13,
+      "onscreen_mouth_speaking_this_line": false,
+      "visual_content": "creator_talking_head",
+      "note": "Off-screen female voice continues question."
+    },
+    {
+      "id": 14,
+      "onscreen_mouth_speaking_this_line": true,
+      "visual_content": "creator_talking_head",
+      "note": "Male creator answers on camera."
+    },
+    {
+      "id": 15,
+      "onscreen_mouth_speaking_this_line": true,
+      "visual_content": "screenshot_overlay",
+      "note": "Male creator speaks with app reward screenshot overlay."
+    },
+    {
+      "id": 16,
+      "onscreen_mouth_speaking_this_line": true,
+      "visual_content": "screenshot_overlay",
+      "note": "Male creator continues with app overlay."
+    },
+    {
+      "id": 17,
+      "onscreen_mouth_speaking_this_line": false,
+      "visual_content": "creator_talking_head",
+      "note": "Off-screen female voice asks about payment options."
+    },
+    {
+      "id": 18,
+      "onscreen_mouth_speaking_this_line": true,
+      "visual_content": "screenshot_overlay",
+      "note": "Male creator explains payment options with screenshot overlay."
+    },
+    {
+      "id": 19,
+      "onscreen_mouth_speaking_this_line": false,
+      "visual_content": "creator_talking_head",
+      "note": "Off-screen female voice reacts while creator eats."
+    },
+    {
+      "id": 20,
+      "onscreen_mouth_speaking_this_line": true,
+      "visual_content": "creator_talking_head",
+      "note": "Male creator speaks on camera."
+    },
+    {
+      "id": 21,
+      "onscreen_mouth_speaking_this_line": true,
+      "visual_content": "creator_talking_head",
+      "note": "Male creator explains sign-up bonus on camera."
+    },
+    {
+      "id": 22,
+      "onscreen_mouth_speaking_this_line": false,
+      "visual_content": "creator_talking_head",
+      "note": "Off-screen female voice agrees while creator looks on camera."
+    }
+  ]
+}

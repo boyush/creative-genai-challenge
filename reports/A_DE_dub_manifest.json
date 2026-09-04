@@ -1,0 +1,209 @@
+[
+  {
+    "id": 0,
+    "start": 0.0,
+    "end": 1.8,
+    "target_duration": 1.8,
+    "de_text": "Warte kurz, wir sind in 'm echt guten Restaurant,",
+    "raw_audio": "assets/generated/challenger_A/de/dub/seg_00_raw.wav",
+    "raw_duration": 2.62
+  },
+  {
+    "id": 1,
+    "start": 1.8,
+    "end": 2.8,
+    "target_duration": 1.0,
+    "de_text": "letzte Woche hattest du 5 Dollar auf dem Konto.",
+    "raw_audio": "assets/generated/challenger_A/de/dub/seg_01_raw.wav",
+    "raw_duration": 3.26
+  },
+  {
+    "id": 2,
+    "start": 2.8,
+    "end": 4.8,
+    "target_duration": 2.0,
+    "de_text": "Ich hab heute Morgen Freecash gezockt, als ich gewartet hab, dass du aufstehst.",
+    "raw_audio": "assets/generated/challenger_A/de/dub/seg_02_raw.wav",
+    "raw_duration": 4.3
+  },
+  {
+    "id": 3,
+    "start": 4.8,
+    "end": 6.1,
+    "target_duration": 1.3,
+    "de_text": "Nicht schon wieder.",
+    "raw_audio": "assets/generated/challenger_A/de/dub/seg_03_raw.wav",
+    "raw_duration": 1.62
+  },
+  {
+    "id": 4,
+    "start": 6.1,
+    "end": 8.8,
+    "target_duration": 2.7,
+    "de_text": "Sag mir bitte nicht, dass das wieder so ein Geld-Spiel ist.",
+    "raw_audio": "assets/generated/challenger_A/de/dub/seg_04_raw.wav",
+    "raw_duration": 4.94
+  },
+  {
+    "id": 5,
+    "start": 8.8,
+    "end": 12.0,
+    "target_duration": 3.2,
+    "de_text": "Ich hab letzten Monat eins getestet und du musst gefühlt 50 Dollar erreichen, nur zum Auszahlen.",
+    "raw_audio": "assets/generated/challenger_A/de/dub/seg_05_raw.wav",
+    "raw_duration": 5.98
+  },
+  {
+    "id": 6,
+    "start": 12.0,
+    "end": 13.9,
+    "target_duration": 1.9,
+    "de_text": "Und dann ghosten sie dich einfach.",
+    "raw_audio": "assets/generated/challenger_A/de/dub/seg_06_raw.wav",
+    "raw_duration": 2.42
+  },
+  {
+    "id": 7,
+    "start": 13.9,
+    "end": 15.6,
+    "target_duration": 1.7,
+    "de_text": "Ich weiß, die meisten dauern ewig.",
+    "raw_audio": "assets/generated/challenger_A/de/dub/seg_07_raw.wav",
+    "raw_duration": 3.74
+  },
+  {
+    "id": 8,
+    "start": 15.6,
+    "end": 18.0,
+    "target_duration": 2.4,
+    "de_text": "Deshalb hat Freecash eine 4,7 auf Trustpilot,",
+    "raw_audio": "assets/generated/challenger_A/de/dub/seg_08_raw.wav",
+    "raw_duration": 3.42
+  },
+  {
+    "id": 9,
+    "start": 18.0,
+    "end": 20.8,
+    "target_duration": 2.8,
+    "de_text": "und sie zahlen am selben Tag aus, das Geld ist also sicher.",
+    "raw_audio": "assets/generated/challenger_A/de/dub/seg_09_raw.wav",
+    "raw_duration": 6.78
+  },
+  {
+    "id": 10,
+    "start": 20.8,
+    "end": 22.7,
+    "target_duration": 1.9,
+    "de_text": "Außerdem bezahlen die Spieleentwickler für echte Spieler,",
+    "raw_audio": "assets/generated/challenger_A/de/dub/seg_10_raw.wav",
+    "raw_duration": 3.66
+  },
+  {
+    "id": 11,
+    "start": 22.7,
+    "end": 26.0,
+    "target_duration": 3.3,
+    "de_text": "du kriegst also praktisch Geld dafür, dass du die Spiele testest und zockst.",
+    "raw_audio": "assets/generated/challenger_A/de/dub/seg_11_raw.wav",
+    "raw_duration": 4.38
+  },
+  {
+    "id": 12,
+    "start": 26.0,
+    "end": 28.3,
+    "target_duration": 2.3,
+    "de_text": "Okay, aber von wie viel reden wir hier wirklich,",
+    "raw_audio": "assets/generated/challenger_A/de/dub/seg_12_raw.wav",
+    "raw_duration": 3.26
+  },
+  {
+    "id": 13,
+    "start": 28.3,
+    "end": 29.8,
+    "target_duration": 1.5,
+    "de_text": "so realistisch gesehen?",
+    "raw_audio": "assets/generated/challenger_A/de/dub/seg_13_raw.wav",
+    "raw_duration": 2.42
+  },
+  {
+    "id": 14,
+    "start": 29.8,
+    "end": 32.0,
+    "target_duration": 2.2,
+    "de_text": "43 Dollar seit heute Morgen,",
+    "raw_audio": "assets/generated/challenger_A/de/dub/seg_14_raw.wav",
+    "raw_duration": 3.14
+  },
+  {
+    "id": 15,
+    "start": 32.0,
+    "end": 33.8,
+    "target_duration": 1.8,
+    "de_text": "und das nur vom Zocken. Es gibt auch Umfragen",
+    "raw_audio": "assets/generated/challenger_A/de/dub/seg_15_raw.wav",
+    "raw_duration": 3.22
+  },
+  {
+    "id": 16,
+    "start": 33.8,
+    "end": 35.4,
+    "target_duration": 1.6,
+    "de_text": "und App-Tests.",
+    "raw_audio": "assets/generated/challenger_A/de/dub/seg_16_raw.wav",
+    "raw_duration": 1.1
+  },
+  {
+    "id": 17,
+    "start": 35.4,
+    "end": 37.8,
+    "target_duration": 2.4,
+    "de_text": "Und das ging auf dein PayPal? So richtig aufs Konto?",
+    "raw_audio": "assets/generated/challenger_A/de/dub/seg_17_raw.wav",
+    "raw_duration": 3.14
+  },
+  {
+    "id": 18,
+    "start": 37.8,
+    "end": 41.3,
+    "target_duration": 3.5,
+    "de_text": "PayPal, Geschenkkarten, Überweisung, was du willst, und zwar am selben Tag.",
+    "raw_audio": "assets/generated/challenger_A/de/dub/seg_18_raw.wav",
+    "raw_duration": 3.98
+  },
+  {
+    "id": 19,
+    "start": 41.3,
+    "end": 43.2,
+    "target_duration": 1.9,
+    "de_text": "Warum hast du das nicht erzählt? Ich will auch mitzocken.",
+    "raw_audio": "assets/generated/challenger_A/de/dub/seg_19_raw.wav",
+    "raw_duration": 3.26
+  },
+  {
+    "id": 20,
+    "start": 43.2,
+    "end": 45.2,
+    "target_duration": 2.0,
+    "de_text": "Ich sag's dir doch jetzt, passt eigentlich perfekt.",
+    "raw_audio": "assets/generated/challenger_A/de/dub/seg_20_raw.wav",
+    "raw_duration": 3.22
+  },
+  {
+    "id": 21,
+    "start": 45.2,
+    "end": 48.3,
+    "target_duration": 3.1,
+    "de_text": "Gibt grad 10 Dollar Anmeldebonus für alle, die die App diese Woche holen.",
+    "raw_audio": "assets/generated/challenger_A/de/dub/seg_21_raw.wav",
+    "raw_duration": 5.14
+  },
+  {
+    "id": 22,
+    "start": 48.3,
+    "end": 50.1,
+    "target_duration": 1.8,
+    "de_text": "Alles klar, ich lad sie mir runter.",
+    "raw_audio": "assets/generated/challenger_A/de/dub/seg_22_raw.wav",
+    "raw_duration": 3.74
+  }
+]

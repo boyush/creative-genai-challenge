@@ -1,0 +1,39 @@
+flowchart LR
+  classDef implemented fill:#d4edda,stroke:#28a745,color:#14532d;
+  classDef humangate fill:#fff3cd,stroke:#d39e00,color:#664d03;
+  classDef external fill:#cfe2ff,stroke:#0d6efd,color:#052c65;
+  classDef future fill:#eeeeee,stroke:#888888,stroke-dasharray: 4 3,color:#555555;
+
+  subgraph LEGEND["Legend"]
+    direction LR
+    L1["IMPLEMENTED"]:::implemented
+    L2["HUMAN GATE"]:::humangate
+    L3["EXTERNAL AI/MEDIA"]:::external
+    L4["FUTURE / PRODUCTION"]:::future
+  end
+
+  WC["Winning Creative<br/>input/winner_01.mp4"]:::implemented
+  CG["Winner Analysis / Creative Genome<br/>reports/winner_01_asset_inventory.json"]:::implemented
+  EH["Experiment Hypothesis<br/>causal_claim: false"]:::implemented
+  EM["Experiment Manifest + Validation<br/>manifests/experiments/*.json<br/>src/manifest.py::load_challenger"]:::implemented
+  DEC{"Reuse existing asset OR<br/>generate ONLY the changed<br/>creative variable?"}:::implemented
+  NOTE1["Real payment / earnings / UI proof is<br/>ALWAYS a source-controlled 'kind: source' trim —<br/>never generated"]:::humangate
+  AR["Asset Resolution / Cache<br/>src/assets.py (Asset Resolution Policy)<br/>src/generate.py (cache-first)"]:::implemented
+  GEN["Selective Generation<br/>fal.ai — hook segment ONLY,<br/>~3-5s, never the whole ad"]:::external
+  NOTE2["Generative media touches only the<br/>experimental segment (the hook) —<br/>body/proof is always reused real footage"]:::humangate
+  SM["Scene Manifest<br/>manifests/scenes/*.json"]:::implemented
+  DC["Deterministic Composition<br/>src/compose.py + FFmpeg"]:::implemented
+  TQA["Technical QA<br/>src/qa.py"]:::implemented
+  HQA["Human Creative QA"]:::humangate
+  CHAL["Challenger Asset<br/>A = hook / proof timing<br/>B = visual pattern interrupt"]:::implemented
+  ABT["A/B Performance Test"]:::future
+  PI["Performance Ingestion /<br/>Automatic Learning"]:::future
+
+  WC --> CG --> EH --> EM --> DEC
+  DEC -->|"reuse"| AR
+  DEC -->|"generate changed variable only"| GEN --> AR
+  DEC -.- NOTE1
+  GEN -.- NOTE2
+  AR --> SM --> DC --> TQA --> HQA --> CHAL --> ABT
+  ABT -.->|"FUTURE STATE — no ad-platform<br/>integration exists in this repo"| PI
+  PI -.->|"dashed feedback, not implemented"| CG

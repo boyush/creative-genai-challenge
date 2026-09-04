@@ -1,0 +1,64 @@
+{
+  "purpose": "Controlled French voice-quality test after A_FR_v2 (Dubbing v2) was human-QA-failed for being too fast and not sufficiently native-sounding. Tests whether removing the forced-duration constraint and swapping to a native French Voice Library voice (no source-voice cloning) fixes both problems, independent of the $43/33 issue (not addressed here per instruction).",
+  "status": "human_review_pending",
+  "config_inspection": {
+    "dubbing_v2_timing_behavior_found": "Empirical evidence from the A_DE/A_FR/A_KO v2 builds: ElevenLabs Dubbing v2's 'automatic' mode returns an audio/video duration matching the ORIGINAL SOURCE VIDEO length regardless of the 'expected_duration_sec' estimate given at job submission (e.g. DE job estimated 70.08s at submit, actual returned duration was 57.54s = original video length). This confirms Dubbing v2 in automatic mode forces output timing to the source video's duration -- there is no documented parameter (start_time/end_time only trims input; no 'natural_pacing' or 'no_compress' flag exists in the API) to disable this. This is why this test switches to direct multilingual Text-to-Speech instead of Dubbing v2, per instruction.",
+    "disable_voice_cloning_param": "Exists on the Dubbing v2 create endpoint (bool, default false). When true, Dubbing v2 substitutes a Voice Library voice instead of cloning the source speaker -- this is the lever for 'native delivery over source-voice similarity' within Dubbing v2 itself. NOT used in this test because Dubbing v2's timing behavior (above) is the dominant problem the human flagged (speech too fast), and disable_voice_cloning does not address timing. Recorded here for completeness/future reference.",
+    "target_accent_param": "Exists on Dubbing v2 (experimental, influences voice selection + translation for a requested accent). Not used here since this test bypasses Dubbing v2 entirely.",
+    "decision": "Used ElevenLabs standard multilingual Text-to-Speech (POST /v1/text-to-speech/{voice_id}) with a native French Voice Library voice and our existing Gemini French translation text, with NO duration constraint of any kind."
+  },
+  "source": {
+    "file": "final/A_EN.mp4",
+    "segment_start_sec": 13.9,
+    "segment_end_sec": 20.8,
+    "segment_duration_sec": 6.93,
+    "transcript_segment_ids": [7, 8, 9],
+    "selection_rationale": "Same visible-speaking, no-cut, normal-conversational-claim segment used for the earlier A_DE 7s sample validation, chosen here again for cross-language/cross-test comparability.",
+    "french_text_used": "Je sais, la plupart prennent une éternité. C'est pour ça que Freecash a 4,7 sur Trustpilot, et ils me paient le jour même, donc c'est du solide.",
+    "text_source": "reports/A_FR_translation.json segments 7-9 (existing Gemini translation, reused verbatim, no new Gemini call made)"
+  },
+  "provider": {
+    "name": "ElevenLabs",
+    "product": "Text-to-Speech (NOT Dubbing v2)",
+    "endpoint": "POST https://api.elevenlabs.io/v1/text-to-speech/{voice_id}",
+    "model_id": "eleven_multilingual_v2",
+    "voice_id": "rlqCQzyNTVyUMPGBqC31",
+    "voice_name": "Yann - Warm & Deep Storyteller",
+    "voice_source": "ElevenLabs shared Voice Library (GET /v1/shared-voices?language=fr&gender=male), NOT a clone of the original English speaker -- source-voice cloning was not used at all for this test, maximizing native-delivery likelihood per instruction priority order.",
+    "voice_labels": {"language": "fr", "locale": "fr-FR", "accent": "standard", "gender": "male", "age": "middle_aged", "use_case": "narrative_story/audiobook narration"},
+    "voice_settings_used": {"stability": 0.5, "similarity_boost": 0.75, "style": 0.3, "use_speaker_boost": true},
+    "speed_parameter_used": "none (omitted entirely -- no speed/duration control passed, output is the model's natural unconstrained pacing)"
+  },
+  "timing": {
+    "source_duration_sec": 6.93,
+    "natural_french_audio_duration_sec": 8.06,
+    "time_compression_applied": false,
+    "note": "French came out ~16% longer than the English source clip. The OUTPUT VIDEO was extended (not the audio shortened) via a deterministic freeze-hold on the last video frame (ffmpeg tpad clone, +1.13s), matching the project's existing hold-extension technique from the original Challenger A hook build. No audio speed/pitch alteration of any kind was applied."
+  },
+  "output": {
+    "file": "review/A_FR_natural_voice_test.mp4",
+    "duration_sec": 8.07,
+    "is_lip_synced": false,
+    "captions": "not added -- this is a voice-quality-only test per instruction scope (no caption/full-pipeline work requested)."
+  },
+  "technical_qa": {
+    "playable": true,
+    "clean_full_decode": true,
+    "video_codec": "h264",
+    "audio_codec": "aac",
+    "resolution": "1080x1920",
+    "audio_level_check": {"mean_volume_db": -22.0, "max_volume_db": -5.9}
+  },
+  "perceptual_quality": {
+    "status": "NOT_EVALUATED_BY_CLAUDE",
+    "note": "Pronunciation/nativeness/cadence NOT auto-approved. This test changes two variables at once versus the failed A_FR_v2 (voice source: native library voice vs cloned; timing: unconstrained vs forced-to-video-length) -- if this sounds better, a follow-up could isolate which change mattered, but that is a decision for human review, not assumed here."
+  },
+  "scope_confirmation": {
+    "dollar_amount_issue_addressed": false,
+    "ko_touched": false,
+    "challenger_B_or_C_touched": false,
+    "fal_ai_lip_sync_applied": false,
+    "chatterbox_higgsfield_replicate_heygen_used": false,
+    "new_gemini_calls_made": false
+  }
+}

@@ -1,0 +1,209 @@
+[
+  {
+    "id": 0,
+    "start": 0.0,
+    "end": 1.8,
+    "target_duration": 1.8,
+    "localized_text": "잠깐만, 우리 되게 좋은 레스토랑 왔는데,",
+    "raw_audio": "assets/generated/challenger_A/ko/dub/seg_00_raw.wav",
+    "raw_duration": 2.9
+  },
+  {
+    "id": 1,
+    "start": 1.8,
+    "end": 2.8,
+    "target_duration": 1.0,
+    "localized_text": "너 지난주엔 잔고 5달러였잖아.",
+    "raw_audio": "assets/generated/challenger_A/ko/dub/seg_01_raw.wav",
+    "raw_duration": 3.34
+  },
+  {
+    "id": 2,
+    "start": 2.8,
+    "end": 4.8,
+    "target_duration": 2.0,
+    "localized_text": "오늘 아침에 너 일어나는 거 기다리면서 Freecash 했거든.",
+    "raw_audio": "assets/generated/challenger_A/ko/dub/seg_02_raw.wav",
+    "raw_duration": 6.7
+  },
+  {
+    "id": 3,
+    "start": 4.8,
+    "end": 6.1,
+    "target_duration": 1.3,
+    "localized_text": "또 시작이네.",
+    "raw_audio": "assets/generated/challenger_A/ko/dub/seg_03_raw.wav",
+    "raw_duration": 1.54
+  },
+  {
+    "id": 4,
+    "start": 6.1,
+    "end": 8.8,
+    "target_duration": 2.7,
+    "localized_text": "또 그런 돈 버는 게임 아니라고 해줘.",
+    "raw_audio": "assets/generated/challenger_A/ko/dub/seg_04_raw.wav",
+    "raw_duration": 5.5
+  },
+  {
+    "id": 5,
+    "start": 8.8,
+    "end": 12.0,
+    "target_duration": 3.2,
+    "localized_text": "지난달에 하나 해봤는데 출금하려면 50달러나 모아야 되더라고.",
+    "raw_audio": "assets/generated/challenger_A/ko/dub/seg_05_raw.wav",
+    "raw_duration": 6.94
+  },
+  {
+    "id": 6,
+    "start": 12.0,
+    "end": 13.9,
+    "target_duration": 1.9,
+    "localized_text": "그러고는 그냥 잠수 타버려.",
+    "raw_audio": "assets/generated/challenger_A/ko/dub/seg_06_raw.wav",
+    "raw_duration": 2.1
+  },
+  {
+    "id": 7,
+    "start": 13.9,
+    "end": 15.6,
+    "target_duration": 1.7,
+    "localized_text": "맞아, 대부분 엄청 오래 걸리지.",
+    "raw_audio": "assets/generated/challenger_A/ko/dub/seg_07_raw.wav",
+    "raw_duration": 2.34
+  },
+  {
+    "id": 8,
+    "start": 15.6,
+    "end": 18.0,
+    "target_duration": 2.4,
+    "localized_text": "그래서 Freecash가 트러스트파일럿 4.7점이고,",
+    "raw_audio": "assets/generated/challenger_A/ko/dub/seg_08_raw.wav",
+    "raw_duration": 4.82
+  },
+  {
+    "id": 9,
+    "start": 18.0,
+    "end": 20.8,
+    "target_duration": 2.8,
+    "localized_text": "당일에 바로 지급해 주니까 확실하다니까.",
+    "raw_audio": "assets/generated/challenger_A/ko/dub/seg_09_raw.wav",
+    "raw_duration": 6.42
+  },
+  {
+    "id": 10,
+    "start": 20.8,
+    "end": 22.7,
+    "target_duration": 1.9,
+    "localized_text": "게다가 게임 개발사가 진짜 유저 모으려고 돈을 내는 거라,",
+    "raw_audio": "assets/generated/challenger_A/ko/dub/seg_10_raw.wav",
+    "raw_duration": 4.02
+  },
+  {
+    "id": 11,
+    "start": 22.7,
+    "end": 26.0,
+    "target_duration": 3.3,
+    "localized_text": "게임 테스트하고 플레이하면서 그 돈을 전달받는 거야.",
+    "raw_audio": "assets/generated/challenger_A/ko/dub/seg_11_raw.wav",
+    "raw_duration": 4.46
+  },
+  {
+    "id": 12,
+    "start": 26.0,
+    "end": 28.3,
+    "target_duration": 2.3,
+    "localized_text": "알겠는데, 그래서 실제로 얼마나 버는데?",
+    "raw_audio": "assets/generated/challenger_A/ko/dub/seg_12_raw.wav",
+    "raw_duration": 5.54
+  },
+  {
+    "id": 13,
+    "start": 28.3,
+    "end": 29.8,
+    "target_duration": 1.5,
+    "localized_text": "현실적으로 말해서?",
+    "raw_audio": "assets/generated/challenger_A/ko/dub/seg_13_raw.wav",
+    "raw_duration": 2.58
+  },
+  {
+    "id": 14,
+    "start": 29.8,
+    "end": 32.0,
+    "target_duration": 2.2,
+    "localized_text": "오늘 아침부터 43달러 벌었지,",
+    "raw_audio": "assets/generated/challenger_A/ko/dub/seg_14_raw.wav",
+    "raw_duration": 2.46
+  },
+  {
+    "id": 15,
+    "start": 32.0,
+    "end": 33.8,
+    "target_duration": 1.8,
+    "localized_text": "그것도 게임만 해서. 설문조사랑",
+    "raw_audio": "assets/generated/challenger_A/ko/dub/seg_15_raw.wav",
+    "raw_duration": 6.18
+  },
+  {
+    "id": 16,
+    "start": 33.8,
+    "end": 35.4,
+    "target_duration": 1.6,
+    "localized_text": "앱 테스트도 있어.",
+    "raw_audio": "assets/generated/challenger_A/ko/dub/seg_16_raw.wav",
+    "raw_duration": 3.7
+  },
+  {
+    "id": 17,
+    "start": 35.4,
+    "end": 37.8,
+    "target_duration": 2.4,
+    "localized_text": "그게 네 페이팔로 들어왔다고? 진짜 페이팔?",
+    "raw_audio": "assets/generated/challenger_A/ko/dub/seg_17_raw.wav",
+    "raw_duration": 4.1
+  },
+  {
+    "id": 18,
+    "start": 37.8,
+    "end": 41.3,
+    "target_duration": 3.5,
+    "localized_text": "페이팔, 기프트카드, 계좌 이체 다 되고 원하는 대로 당일에 들어와.",
+    "raw_audio": "assets/generated/challenger_A/ko/dub/seg_18_raw.wav",
+    "raw_duration": 4.7
+  },
+  {
+    "id": 19,
+    "start": 41.3,
+    "end": 43.2,
+    "target_duration": 1.9,
+    "localized_text": "왜 진작 말 안 했어? 나도 같이 게임할래.",
+    "raw_audio": "assets/generated/challenger_A/ko/dub/seg_19_raw.wav",
+    "raw_duration": 2.86
+  },
+  {
+    "id": 20,
+    "start": 43.2,
+    "end": 45.2,
+    "target_duration": 2.0,
+    "localized_text": "지금 말해주잖아, 타이밍 진짜 좋아.",
+    "raw_audio": "assets/generated/challenger_A/ko/dub/seg_20_raw.wav",
+    "raw_duration": 6.82
+  },
+  {
+    "id": 21,
+    "start": 45.2,
+    "end": 48.3,
+    "target_duration": 3.1,
+    "localized_text": "이번 주에 앱 다운로드하면 10달러 가입 보너스 주거든.",
+    "raw_audio": "assets/generated/challenger_A/ko/dub/seg_21_raw.wav",
+    "raw_duration": 6.14
+  },
+  {
+    "id": 22,
+    "start": 48.3,
+    "end": 50.1,
+    "target_duration": 1.8,
+    "localized_text": "좋아, 나 지금 받는다.",
+    "raw_audio": "assets/generated/challenger_A/ko/dub/seg_22_raw.wav",
+    "raw_duration": 1.82
+  }
+]

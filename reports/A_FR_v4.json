@@ -1,0 +1,73 @@
+{
+  "purpose": "Surgical fix of A_FR_v3's two confirmed QA findings: segment 6 malformed franglais pronunciation, and English-dialogue leakage/duplication in the tail. No other segments regenerated.",
+  "status": "human_review_pending",
+  "changes_from_v3": {
+    "segments_regenerated": [6],
+    "segments_reused_unchanged": [0,1,2,3,4,5,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22],
+    "lipsync_outputs_reused_unchanged": [2,7,14,20,21],
+    "note": "Segment 6 was never a lip-sync segment (lipsync_segment_ids = {2,7,14,20,21}), so no lip-sync regeneration was needed for the repair."
+  },
+  "segment_6_repair": {
+    "reason": "Existing 'Et après, ils te ghostent.' audio was independently confirmed malformed: two separate STT passes (plain, and with an explicit 'ghostent'/'ghost' keyterm hint) both failed to recognize it as French, with low model confidence on the words surrounding 'ghost' both times -- a sign of acoustic ambiguity in the audio itself, not just an unrecognized loanword.",
+    "old_text": "Et après, ils te ghostent.",
+    "new_text": "Et après, ils ne te répondent plus.",
+    "meaning_preserved": "Same meaning (being ignored/unresponsive after cash-out) without the problematic franglais verb conjugation. No product, monetary, performance, or promotional claim changed.",
+    "provider": "ElevenLabs Text-to-Speech, same voice_id (rlqCQzyNTVyUMPGBqC31), same model (eleven_multilingual_v2), same voice_settings, no time compression -- identical configuration to the rest of A_FR_v3/the approved natural-voice test.",
+    "verification": "Post-generation STT on the isolated new audio transcribed it back EXACTLY as 'Et après, ils ne te répondent plus' with every word at ~0 logprob (very high confidence) -- confirmed clean before use.",
+    "new_natural_duration_sec": 2.18,
+    "old_natural_duration_sec": 1.39,
+    "original_english_duration_sec": 1.9,
+    "video_handling": "Segment video rebuilt via the same loop-real-motion method as the rest of the build (no freeze-hold needed; 2.18s exceeds the 1.9s original span by 0.28s, well within a single loop cycle).",
+    "caption_updated": true,
+    "asset_paths": {
+      "audio": "assets/generated/challenger_A/fr_v3/tts/seg_06_v2.mp3",
+      "caption_png": "assets/generated/challenger_A/fr_v3/captions/cap_06_v2.png",
+      "final_clip": "assets/generated/challenger_A/fr_v3/segments/seg_06_v2_final.mp4"
+    }
+  },
+  "tail_fix": {
+    "reason": "Confirmed in A_FR_v3 QA: 'All right, I'm getting it' spoken in English at ~0.38-1.74s into the untranslated tail (original final/A_EN.mp4 50.1-57.4547s), duplicating segment 22's correct French line immediately before it.",
+    "method": "Audio-only fix, no new generation call: applied ffmpeg volume=0 gated to enable='between(t,0.3,1.85)' on the tail's audio track only. Video track (including the branded FREECASH end-card, confirmed present via frame inspection at ~53.5s) is completely untouched. Ambience/music outside the muted window is preserved (~-29.5dB, consistent with the rest of the tail) -- only the specific English-speech window was silenced (~-67dB, i.e. silence/noise-floor).",
+    "end_card_preserved": true,
+    "end_card_content": "FREECASH branded end-card: logo, 'Get paid for playing', '$10 Sign Up Boost Unlocked', 'Get Cash now' CTA button, App Store/Google Play badges -- all pre-existing baked-in graphic/UI content from the original source video, not altered, not translated (out of scope for this surgical fix; badges/UI graphics were not part of the spoken-dialogue leakage issue).",
+    "no_translation_of_tail_line": true,
+    "asset_path": "assets/generated/challenger_A/fr_v3/segments/tail_muted.mp4"
+  },
+  "final_assembly": {
+    "output": "review/A_FR_v4.mp4",
+    "duration_sec": 70.53,
+    "method": "ffmpeg concat of the 23 segment clips (22 reused + repaired segment 6) followed by the muted tail, all already-normalized to matching codec/format so concat is a clean stream copy of consistent encodes."
+  },
+  "technical_qa": {
+    "playable": true, "clean_full_decode": true, "video_codec": "h264", "audio_codec": "aac",
+    "resolution": "1080x1920", "audio_sample_rate": 48000, "audio_channels": 2,
+    "duration_sec": 70.53,
+    "audio_level_check": {"mean_volume_db": -24.8, "max_volume_db": -5.7}
+  },
+  "localization_qa_automated_fresh_full_stt": {
+    "method": "Full-file STT (Scribe v2, word timestamps) run on the ENTIRE assembled A_FR_v4.mp4, same as the pass that originally caught the v3 defects -- not just per-segment spot checks.",
+    "detected_language_code": "fra", "detected_language_probability": 1.0,
+    "monetary_check": {"result": "PASS", "detail": "'quarante-trois dollars' (43) confirmed again in the fresh full-video transcript."},
+    "segment_6_check": {"result": "PASS", "detail": "Transcript now reads 'Et après, ils ne te répondent plus.' cleanly in context, matching the intended repaired text exactly."},
+    "english_leakage_check": {
+      "result": "PASS -- 0 hits",
+      "detail": "Keyword-stopword scan across all 209 recognized words in the fresh transcript found zero English hits (previously 3+ before the fix, including the full 'All right, I'm getting it' sentence). The only non-French token at the very end is a bracketed '[bruit de notification]' audio-event tag from the end-card's UI sound effect -- not speech, expected and left as-is."
+    },
+    "duplicated_dialogue_check": {"result": "PASS", "detail": "Segment 22 ('C'est bon, je la télécharge') now transitions directly into the (non-speech) end-card notification sound, with no trailing English restatement."},
+    "caption_language_check": "All 23 burned captions confirmed French; segment 6's caption updated to match the repaired wording exactly. No English captions anywhere, including the end-card tail (which was never captioned by this pipeline, and its own baked-in text is pre-existing brand/UI graphic content, not a caption this pipeline added)."
+  },
+  "lipsync_integrity": {
+    "result": "PASS", "detail": "All 5 lip-sync outputs (segments 2,7,14,20,21) reused byte-for-byte from A_FR_v3 -- not touched by this repair, since segment 6 was never in the lip-sync set."
+  },
+  "perceptual_quality": {
+    "status": "NOT_EVALUATED_BY_CLAUDE",
+    "note": "Segment 6's new pronunciation and the tail mute's audio transition (any abruptness at the mute boundary) are not auto-approved -- human listen still required, though all automated/technical gates you specified now pass."
+  },
+  "scope_confirmation": {
+    "ko_touched": false, "challenger_B_or_C_touched": false,
+    "other_segments_regenerated": false, "other_lipsync_regenerated": false,
+    "final_A_FR_or_v2_or_v3_overwritten": false,
+    "chatterbox_higgsfield_replicate_heygen_used": false,
+    "new_provider_experimentation": false
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "output": "final/A_FR.mp4",
+  "parent": "final/A_EN.mp4",
+  "target_language": "French",
+  "translation_source": "reports/A_EN_transcript.json",
+  "translation_file": "reports/A_FR_translation.json",
+  "dub_manifest": "reports/A_FR_dub_manifest.json",
+  "reference_voice_url_fal": "https://v3b.fal.media/files/b/0aa8d194/9oq6YqAAuOrxZyl2jhINz_reference_voice.wav",
+  "lipsync_segment_ids": [
+    2,
+    7,
+    14,
+    20,
+    21
+  ],
+  "no_retranscription": true,
+  "no_a_en_a_de_rerender": true,
+  "no_replicate": true,
+  "tts_concurrency": 4,
+  "lipsync_concurrency": 2,
+  "qa": {
+    "file_exists": true,
+    "resolution": "1080,1920",
+    "video_codec": "h264",
+    "audio_codec": "aac",
+    "fps": "30/1",
+    "duration_seconds": 61.066667,
+    "full_decode_clean": true,
+    "full_decode_stderr": "",
+    "pass": true
+  },
+  "v2": {
+    "file": "review/A_FR_v2.mp4",
+    "status": "human_qa_failed",
+    "human_review_decision": "human_qa_failed",
+    "human_review_decision_date": "2026-09-03",
+    "human_review_note": "Speech noticeably too fast; pronunciation/accent not sufficiently native French. Rejected regardless of technical/automated QA. (The $43->33 monetary drift flagged at build time was NOT the stated reason for rejection -- voice quality was the larger blocker per instruction -- but remains a separate, real defect of this version.)",
+    "provider": "ElevenLabs Dubbing (audio only) + original final/A_EN.mp4 video track",
+    "dubbing_id": "cSBkH1r6q686DRdowh10",
+    "build_report": "reports/A_FR_v2_elevenlabs.json",
+    "captions": "reports/A_FR_v2_captions.json",
+    "flagged_finding": "Monetary-specificity drift ($43 -> transcribed as 33) at ~32.4s; see build_report MONETARY_SPECIFICITY_FINDING.",
+    "note": "Not promoted to final/. v1 (final/A_FR.mp4, above) is untouched."
+  },
+  "natural_voice_test": {
+    "file": "review/A_FR_natural_voice_test.mp4",
+    "status": "human_qa_approved",
+    "human_review_decision": "human_qa_approved",
+    "human_review_decision_date": "2026-09-03",
+    "human_review_note": "Native French TTS test sounds natural and appropriately paced. Approved as the architecture basis for v3.",
+    "provider": "ElevenLabs multilingual Text-to-Speech (not Dubbing v2), native fr-FR Voice Library voice, no source-voice cloning, no forced duration",
+    "build_report": "reports/A_FR_natural_voice_test.json"
+  },
+  "v3": {
+    "file": "review/A_FR_v3.mp4",
+    "status": "human_qa_failed",
+    "human_review_decision": "human_qa_failed_partial",
+    "human_review_decision_date": "2026-09-03",
+    "human_review_note": "Natural localization architecture (per-segment TTS + adaptive timing + selective lip-sync) itself approved/not in question. QA failed only due to two specific, isolated defects: untranslated duplicated English tail, and segment 6 malformed franglais pronunciation. Not a full rebuild -- surgical fix authorized instead.",
+    "provider": "ElevenLabs multilingual TTS (per-segment, natural duration, voice_id rlqCQzyNTVyUMPGBqC31) + adaptive video timing (loop real motion, no freeze-holds) + fal.ai sync-lipsync v2 pro (segments 2,7,14,20,21, sync_mode=loop) + burned French captions",
+    "build_report": "reports/A_FR_v3.json",
+    "known_defects": [
+      "CONFIRMED English-dialogue leakage + duplicated dialogue in the untouched original tail (~62.9-63.9s): 'All right, I'm getting it' spoken in English right after segment 22's correct French line. FIXED in v4 (muted, end-card preserved).",
+      "CONFIRMED (on further inspection) segment 6 ('ils te ghostent') malformed/acoustically ambiguous franglais pronunciation -- two independent STT passes (plain + keyterm-hinted) both failed to resolve it, with low model confidence on surrounding words. FIXED in v4 (rewritten to 'ils ne te répondent plus')."
+    ],
+    "verified_pass": "$43 confirmed spoken correctly as 'quarante-trois dollars' (not 33, unlike v2).",
+    "note": "Not promoted to final/. v1 (final/A_FR.mp4) and v2 (review/A_FR_v2.mp4) both preserved unmodified."
+  },
+  "v4": {
+    "file": "final/A_FR_v4.mp4",
+    "review_copy": "review/A_FR_v4.mp4",
+    "status": "human_qa_approved",
+    "human_review_decision": "human_qa_approved",
+    "human_review_decision_date": "2026-09-03",
+    "promoted_to": "final/A_FR_v4.mp4",
+    "frozen": true,
+    "provider": "Same architecture as v3. Surgical changes only: segment 6 audio/caption/video regenerated via ElevenLabs TTS (same voice/model/settings); tail audio selectively muted via ffmpeg (no new generation call) preserving the FREECASH end-card visual and its ambience. All other 22 segments and all 5 lip-sync outputs reused byte-for-byte from v3.",
+    "build_report": "reports/A_FR_v4.json",
+    "fresh_full_video_stt_qa": "PASS on all explicitly-requested checks: French throughout (100% confidence), zero English leakage (0/209 words), zero duplicated dialogue, segment 6 now transcribes cleanly as the repaired French text, $43 still correct, captions French including repaired segment 6, lip-sync outputs untouched/intact, FREECASH end-card visually preserved, 1080x1920 H.264/AAC, clean full decode.",
+    "not_evaluated": "Perceptual quality (segment 6's new pronunciation naturalness, tail mute transition smoothness) remains a human-review gate, not auto-approved.",
+    "note": "Not promoted to final/. v1, v2, and v3 all preserved unmodified."
+  }
+}

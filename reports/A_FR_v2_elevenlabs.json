@@ -1,0 +1,52 @@
+{
+  "purpose": "A_FR v2 candidate using the ElevenLabs Dubbing workflow validated and approved for A_DE v2. Source: final/A_EN.mp4 (not the German dub).",
+  "status": "human_review_pending",
+  "provider": {
+    "name": "ElevenLabs", "product": "Dubbing API", "api_model_field_returned": "dubbing_v1",
+    "dubbing_id": "cSBkH1r6q686DRdowh10"
+  },
+  "request_settings": {
+    "target_lang": "fr", "source_lang": "en", "num_speakers": 2,
+    "watermark": true, "drop_background_audio": false, "highest_resolution": false, "mode": "automatic"
+  },
+  "watermark_caveat": "watermark=true kept, same as approved A_DE v2 configuration; not re-tested for removal per instruction not to spend a generation call on that.",
+  "upload_note": "Reused the same downscaled 540x960 upload copy of final/A_EN.mp4 already produced for the DE build (audio quality unaffected -- only ElevenLabs' audio track is used; output video track is the original full-resolution final/A_EN.mp4).",
+  "source": {"file": "final/A_EN.mp4", "duration_sec": 57.4547, "full_video_used": true},
+  "output": {
+    "file": "review/A_FR_v2.mp4",
+    "video_track_source": "final/A_EN.mp4 (original, untouched, full resolution)",
+    "audio_track_source": "ElevenLabs dubbing_id cSBkH1r6q686DRdowh10, French, trimmed to video length",
+    "is_lip_synced": false,
+    "captions": "Existing Gemini French translation wording (reports/A_FR_translation.json localized_text) kept verbatim, retimed to the actual ElevenLabs audio via the same STT-anchored proportional word-count method used for A_DE v2 (see reports/A_FR_v2_captions.json)."
+  },
+  "technical_qa": {
+    "playable": true, "audio_stream_present": true, "video_codec": "h264", "audio_codec": "aac",
+    "resolution": "1080x1920", "audio_sample_rate": 48000, "audio_channels": 2,
+    "duration_sec": 57.47, "clean_full_decode": true,
+    "audio_level_check": {"mean_volume_db": -27.3, "max_volume_db": -5.5}
+  },
+  "localization_qa_automated": {
+    "detected_language_code": "fra", "detected_language_probability": 1.0,
+    "word_count_ratio_actual_over_script": 1.063,
+    "words_per_second": 4.217,
+    "english_leakage_heuristic": {
+      "raw_hits": [],
+      "finding": "0 hits. Brand terms 'Free Cash' and 'Trust Pilot' are spoken as proper nouns in English, consistent with locked-variable brand handling -- not flagged as leakage."
+    },
+    "MONETARY_SPECIFICITY_FINDING": {
+      "severity": "flag_for_human_verification",
+      "summary": "The specific dollar amount appears to have drifted: original English source (reports/A_EN_transcript.json segment 14) says '43 dollars since this morning'; the ElevenLabs French dub's transcribed speech says 'Trente-trois dollars depuis ce matin' = THIRTY-THREE dollars, at audio timestamp ~32.4s.",
+      "caveat": "Source of the discrepancy is not confirmed -- could be (a) ElevenLabs' automatic translation genuinely altering the number, or (b) an STT mishearing of a correctly-spoken 'quarante-trois' (43) as 'trente-trois' (33). Either way this hits CLAUDE.md's locked-variable requirement to preserve monetary specificity exactly, and needs a human listen at ~32s in review/A_FR_v2.mp4 before any promotion decision.",
+      "timestamp_in_output_sec": 32.4
+    },
+    "caption_coverage_note": "23 lines retimed; see reports/A_FR_v2_captions.json for exact per-line timing."
+  },
+  "perceptual_quality": {
+    "status": "NOT_EVALUATED_BY_CLAUDE",
+    "note": "Not auto-declared PASS. Human listening review required, with specific attention to the monetary-specificity flag above at ~32s."
+  },
+  "scope_confirmation": {
+    "fal_ai_lip_sync_applied": false, "challenger_B_or_C_touched": false,
+    "final_A_FR_overwritten": false, "chatterbox_higgsfield_replicate_heygen_used": false
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "challenger": "B_v2_smoke",
+  "stages": {
+    "compose": {
+      "status": "completed",
+      "ts": "2026-09-04T08:35:51Z",
+      "output": "state/smoke/B_EN_v2_smoke.mp4",
+      "paid_calls_made": 0
+    },
+    "qa": {
+      "status": "completed",
+      "ts": "2026-09-04T08:35:51Z"
+    }
+  },
+  "updated_at": "2026-09-04T08:35:51Z"
+}

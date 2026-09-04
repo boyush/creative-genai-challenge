@@ -1,0 +1,68 @@
+{
+  "output": "final/A_EN.mp4",
+  "generated_at": "2026-09-02T12:12:29Z",
+  "parent_source": "input/winner_01.mp4",
+  "challenger_manifest": "manifests/experiments/challenger_A.json",
+  "asset_inventory": "reports/winner_01_asset_inventory.json",
+  "generation_method": "deterministic ffmpeg reuse-only assembly (no paid/generative services called)",
+  "segments": [
+    {
+      "final_range_s": [
+        0.0,
+        2.0
+      ],
+      "id": "hook_scene_1",
+      "source": "input/winner_01.mp4",
+      "source_range_s": [
+        0.0,
+        2.0
+      ],
+      "operation": "trim + caption overlay (drawbox cover + PIL-rendered PNG overlay, composited via ffmpeg overlay filter)",
+      "new_caption": "He paid for dinner by playing games?",
+      "build_file": "assets/generated/challenger_A/seg_a_hook1.mp4"
+    },
+    {
+      "final_range_s": [
+        2.0,
+        5.0
+      ],
+      "id": "hook_scene_2",
+      "source": "input/winner_01.mp4",
+      "source_range_s": [
+        4.8,
+        6.57
+      ],
+      "operation": "trim (1.77s real earnings-proof footage) + caption overlay + deterministic freeze-hold extension (tpad/apad clone, +1.23s) to reach 3.0s target",
+      "new_caption": "Apparently... yes.",
+      "proof_authenticity": "real PayPal wallet screenshot from source video, not generated",
+      "build_file": "assets/generated/challenger_A/seg_b_hook2.mp4"
+    },
+    {
+      "final_range_s": [
+        5.0,
+        57.43
+      ],
+      "id": "locked_body",
+      "source": "input/winner_01.mp4",
+      "source_range_s": [
+        6.57,
+        59.0
+      ],
+      "operation": "passthrough re-encode, no caption/content changes (product_reveal -> objection -> trust_proof -> product_demo -> payout -> offer -> cta, unmodified per locked_variables)",
+      "build_file": "assets/generated/challenger_A/seg_c_body.mp4"
+    }
+  ],
+  "no_generation_used": true,
+  "qa": {
+    "file_exists": true,
+    "resolution": "1080x1920",
+    "video_codec": "h264 (Main profile)",
+    "audio_codec": "aac (LC)",
+    "pix_fmt": "yuv420p",
+    "fps": 30,
+    "full_decode": "clean, no errors",
+    "duration_seconds": 57.454687
+  },
+  "output_sha256": "a8cae37f33ccc11aedcd8d41039faf2989a91148a4f083b4ee589ad94763b96f",
+  "output_size_bytes": 24682938
+}

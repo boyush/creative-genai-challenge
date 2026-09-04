@@ -1,0 +1,55 @@
+{
+  "purpose": "Caption-font-only repair of A_KO_v3: Korean captions rendered as square/tofu glyphs because the shared caption renderer (scripts/localize_build.py make_caption_png) hardcodes FONT_PATH = '/System/Library/Fonts/Supplemental/Arial Black.ttf', which has no Hangul glyph coverage. No TTS, translation, lip-sync, or video timing was regenerated.",
+  "status": "human_review_pending",
+  "font_diagnosis": {
+    "broken_font": "/System/Library/Fonts/Supplemental/Arial Black.ttf (no Hangul coverage -- source of the tofu/square-box rendering)",
+    "fix_font": "/System/Library/Fonts/AppleSDGothicNeo.ttc, font index 14 (Apple SD Gothic Neo ExtraBold)",
+    "selection_method": "Searched installed system fonts on this Mac for Korean/CJK coverage (find over /System/Library/Fonts, /Library/Fonts, ~/Library/Fonts for gothic/noto*cjk/noto*kr/applesdgothic patterns). Found AppleSDGothicNeo.ttc already installed as a macOS system font -- no download needed, per instruction to prefer an existing system font over fetching a new one.",
+    "why_extrabold_index_14": "AppleSDGothicNeo.ttc is a font collection with 18 weight/style variants; ExtraBold (index 14) was chosen to visually match the existing bold/heavy caption look the project already uses (Arial Black for DE/FR captions).",
+    "pre_render_verification": "Before touching the full video, rendered ONE standalone test caption PNG using real text from reports/A_KO_translation.json (id 8: 'ᄀ...Freecash가 트러스트파일럿 4.7점이고,') and visually inspected it composited on the black caption-bar background -- confirmed real Hangul glyphs (and the mixed-in Latin brand name 'Freecash' and numerals '4.7') render correctly, no tofu, before proceeding to rebuild all 23 segments.",
+    "scope_note": "This fix is isolated to a NEW Korean-specific caption function (used only for this Korean rebuild); it does NOT modify the shared FONT_PATH constant in scripts/localize_build.py, so the already-frozen/approved German and French assets (which use Latin-script captions where Arial Black is fine) are completely unaffected."
+  },
+  "what_was_reused_unchanged": {
+    "korean_tts_audio": "assets/generated/challenger_A/ko_v3/tts/seg_NN.mp3 (all 23 segments, byte-for-byte, no new ElevenLabs TTS calls)",
+    "lipsync_outputs": "assets/generated/challenger_A/ko_v3/lipsync/seg_NN_lipsynced.mp4 for segments 2,7,14,20,21 (byte-for-byte, no new fal.ai calls)",
+    "tail_asset": "assets/generated/challenger_A/ko_v3/segments/tail_muted.mp4 (byte-for-byte, same FREECASH end-card + muted English-dialogue fix from v3)",
+    "translation_text_and_timestamps": "reports/A_KO_translation.json, unchanged",
+    "video_adaptation_values": "Each non-lipsync segment's video is re-derived from final/A_EN.mp4 using the exact same (start, span, target_duration) triples already computed for v3 -- a deterministic, non-paid, local ffmpeg re-derivation identical in content to v3's own video, produced fresh only because the original intermediate file (pre-caption) had been cleaned up after v3's build and re-deriving it locally was simpler than trying to reverse a caption already burned into a finished clip.",
+    "verification_of_no_change": "Extracted the full audio track from both review/A_KO_v3.mp4 and review/A_KO_v4.mp4 as uncompressed PCM and byte-compared them: IDENTICAL. This directly proves the Korean dialogue, lip-sync audio, and tail mute are completely unchanged -- only the caption (video overlay) layer differs."
+  },
+  "what_changed": {
+    "captions_only": "All 23 caption PNGs re-rendered with the Hangul-capable font. Same wording (reports/A_KO_translation.json localized_text, unchanged), same per-segment timing (captions are burned onto each segment's own clip, matching that segment's existing natural-duration timing from v3 exactly -- durations verified identical: every segment's final clip duration in v4 matches its v3 counterpart to the same rounding), same placement/sizing/stroke/background treatment as before (1080x440 canvas, black bar overlay at y=1090-1490, centered white text with black stroke, auto line-wrap up to 3 lines) -- only the font itself changed."
+  },
+  "output": {"file": "review/A_KO_v4.mp4", "duration_sec": 68.333333, "duration_matches_v3": true},
+  "technical_qa": {
+    "playable": true, "clean_full_decode": true, "video_codec": "h264", "audio_codec": "aac",
+    "resolution": "1080x1920", "audio_sample_rate": 48000, "audio_channels": 2,
+    "duration_sec": 68.33
+  },
+  "glyph_rendering_verification": {
+    "method": "Extracted real frames from the assembled review/A_KO_v4.mp4 (not just the isolated test PNG) at two different caption instances (~16.5s creator talking-head, ~30s gameplay-footage overlay) and visually inspected them.",
+    "result": "PASS -- both frames show correctly rendered Hangul glyphs, readable, properly wrapped, no square/tofu replacement characters. Mixed Hangul+Latin+numeral text (brand name, decimal ratings, dollar amounts) all render correctly. Caption bar does not cover the top UI/payment-proof area (balance/streak counters visible unobstructed in the gameplay frame)."
+  },
+  "localization_qa_fresh_full_stt_on_v4": {
+    "detected_language_code": "kor", "detected_language_probability": 1.0,
+    "english_leakage_check": {"result": "PASS -- 0 hits"},
+    "monetary_check": {"result": "PASS", "detail": "'43' present in transcript, consistent with the unchanged audio."},
+    "note": "Since the audio track is byte-identical to the already-verified-clean v3, this STT pass is a confirmatory re-check on the actual v4 file, not a new/different result."
+  },
+  "lipsync_integrity": {"result": "PASS", "detail": "Segments 2,7,14,20,21 reuse the exact v3 lipsync_dir outputs; audio byte-comparison above confirms no re-generation or re-mixing occurred."},
+  "caption_language_check": "All 23 captions confirmed Korean, unchanged wording from reports/A_KO_translation.json.",
+  "perceptual_quality": {
+    "status": "NOT_EVALUATED_BY_CLAUDE",
+    "note": "This fix only touches caption rendering; the underlying audio/lip-sync perceptual quality already flagged as human-review-pending in A_KO_v3 remains equally pending here (unchanged content)."
+  },
+  "scope_confirmation": {
+    "korean_tts_regenerated": false,
+    "translations_regenerated": false,
+    "lipsync_regenerated": false,
+    "video_timing_regenerated": false,
+    "paid_calls_made": false,
+    "de_fr_touched": false,
+    "challenger_B_or_C_touched": false,
+    "final_A_KO_or_v3_overwritten": false
+  }
+}

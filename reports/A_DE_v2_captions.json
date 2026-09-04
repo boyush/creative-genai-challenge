@@ -1,0 +1,255 @@
+[
+  {
+    "id": 0,
+    "text": "Warte kurz, wir sind in 'm echt guten Restaurant,",
+    "start": 0.199,
+    "end": 2.099,
+    "stt_word_range": [
+      0,
+      9
+    ],
+    "png": "/private/tmp/claude-501/-Users-deboradeva-creative-factory/0e1735f5-59f7-4048-b4e3-6af5ecc8d41b/scratchpad/captions_v2/cap_00.png"
+  },
+  {
+    "id": 1,
+    "text": "letzte Woche hattest du 5 Dollar auf dem Konto.",
+    "start": 2.119,
+    "end": 3.759,
+    "stt_word_range": [
+      9,
+      17
+    ],
+    "png": "/private/tmp/claude-501/-Users-deboradeva-creative-factory/0e1735f5-59f7-4048-b4e3-6af5ecc8d41b/scratchpad/captions_v2/cap_01.png"
+  },
+  {
+    "id": 2,
+    "text": "Ich hab heute Morgen Freecash gezockt, als ich gewartet hab, dass du aufstehst.",
+    "start": 4.059,
+    "end": 7.319,
+    "stt_word_range": [
+      17,
+      30
+    ],
+    "png": "/private/tmp/claude-501/-Users-deboradeva-creative-factory/0e1735f5-59f7-4048-b4e3-6af5ecc8d41b/scratchpad/captions_v2/cap_02.png"
+  },
+  {
+    "id": 3,
+    "text": "Nicht schon wieder.",
+    "start": 7.619,
+    "end": 8.059,
+    "stt_word_range": [
+      30,
+      32
+    ],
+    "png": "/private/tmp/claude-501/-Users-deboradeva-creative-factory/0e1735f5-59f7-4048-b4e3-6af5ecc8d41b/scratchpad/captions_v2/cap_03.png"
+  },
+  {
+    "id": 4,
+    "text": "Sag mir bitte nicht, dass das wieder so ein Geld-Spiel ist.",
+    "start": 8.119,
+    "end": 10.479,
+    "stt_word_range": [
+      32,
+      43
+    ],
+    "png": "/private/tmp/claude-501/-Users-deboradeva-creative-factory/0e1735f5-59f7-4048-b4e3-6af5ecc8d41b/scratchpad/captions_v2/cap_04.png"
+  },
+  {
+    "id": 5,
+    "text": "Ich hab letzten Monat eins getestet und du musst gefühlt 50 Dollar erreichen, nur zum Auszahlen.",
+    "start": 10.519,
+    "end": 14.159,
+    "stt_word_range": [
+      43,
+      58
+    ],
+    "png": "/private/tmp/claude-501/-Users-deboradeva-creative-factory/0e1735f5-59f7-4048-b4e3-6af5ecc8d41b/scratchpad/captions_v2/cap_05.png"
+  },
+  {
+    "id": 6,
+    "text": "Und dann ghosten sie dich einfach.",
+    "start": 14.179,
+    "end": 15.979,
+    "stt_word_range": [
+      58,
+      64
+    ],
+    "png": "/private/tmp/claude-501/-Users-deboradeva-creative-factory/0e1735f5-59f7-4048-b4e3-6af5ecc8d41b/scratchpad/captions_v2/cap_06.png"
+  },
+  {
+    "id": 7,
+    "text": "Ich weiß, die meisten dauern ewig.",
+    "start": 16.039,
+    "end": 18.02,
+    "stt_word_range": [
+      64,
+      70
+    ],
+    "png": "/private/tmp/claude-501/-Users-deboradeva-creative-factory/0e1735f5-59f7-4048-b4e3-6af5ecc8d41b/scratchpad/captions_v2/cap_07.png"
+  },
+  {
+    "id": 8,
+    "text": "Deshalb hat Freecash eine 4,7 auf Trustpilot,",
+    "start": 18.079,
+    "end": 19.699,
+    "stt_word_range": [
+      70,
+      76
+    ],
+    "png": "/private/tmp/claude-501/-Users-deboradeva-creative-factory/0e1735f5-59f7-4048-b4e3-6af5ecc8d41b/scratchpad/captions_v2/cap_08.png"
+  },
+  {
+    "id": 9,
+    "text": "und sie zahlen am selben Tag aus, das Geld ist also sicher.",
+    "start": 19.799,
+    "end": 23.019,
+    "stt_word_range": [
+      76,
+      88
+    ],
+    "png": "/private/tmp/claude-501/-Users-deboradeva-creative-factory/0e1735f5-59f7-4048-b4e3-6af5ecc8d41b/scratchpad/captions_v2/cap_09.png"
+  },
+  {
+    "id": 10,
+    "text": "Außerdem bezahlen die Spieleentwickler für echte Spieler,",
+    "start": 23.1,
+    "end": 25.68,
+    "stt_word_range": [
+      88,
+      95
+    ],
+    "png": "/private/tmp/claude-501/-Users-deboradeva-creative-factory/0e1735f5-59f7-4048-b4e3-6af5ecc8d41b/scratchpad/captions_v2/cap_10.png"
+  },
+  {
+    "id": 11,
+    "text": "du kriegst also praktisch Geld dafür, dass du die Spiele testest und zockst.",
+    "start": 25.739,
+    "end": 29.059,
+    "stt_word_range": [
+      95,
+      107
+    ],
+    "png": "/private/tmp/claude-501/-Users-deboradeva-creative-factory/0e1735f5-59f7-4048-b4e3-6af5ecc8d41b/scratchpad/captions_v2/cap_11.png"
+  },
+  {
+    "id": 12,
+    "text": "Okay, aber von wie viel reden wir hier wirklich,",
+    "start": 29.119,
+    "end": 32.88,
+    "stt_word_range": [
+      107,
+      116
+    ],
+    "png": "/private/tmp/claude-501/-Users-deboradeva-creative-factory/0e1735f5-59f7-4048-b4e3-6af5ecc8d41b/scratchpad/captions_v2/cap_12.png"
+  },
+  {
+    "id": 13,
+    "text": "so realistisch gesehen?",
+    "start": 33.02,
+    "end": 33.479,
+    "stt_word_range": [
+      116,
+      118
+    ],
+    "png": "/private/tmp/claude-501/-Users-deboradeva-creative-factory/0e1735f5-59f7-4048-b4e3-6af5ecc8d41b/scratchpad/captions_v2/cap_13.png"
+  },
+  {
+    "id": 14,
+    "text": "43 Dollar seit heute Morgen,",
+    "start": 33.52,
+    "end": 34.659,
+    "stt_word_range": [
+      118,
+      123
+    ],
+    "png": "/private/tmp/claude-501/-Users-deboradeva-creative-factory/0e1735f5-59f7-4048-b4e3-6af5ecc8d41b/scratchpad/captions_v2/cap_14.png"
+  },
+  {
+    "id": 15,
+    "text": "und das nur vom Zocken. Es gibt auch Umfragen",
+    "start": 34.719,
+    "end": 37.54,
+    "stt_word_range": [
+      123,
+      132
+    ],
+    "png": "/private/tmp/claude-501/-Users-deboradeva-creative-factory/0e1735f5-59f7-4048-b4e3-6af5ecc8d41b/scratchpad/captions_v2/cap_15.png"
+  },
+  {
+    "id": 16,
+    "text": "und App-Tests.",
+    "start": 37.579,
+    "end": 37.84,
+    "stt_word_range": [
+      132,
+      134
+    ],
+    "png": "/private/tmp/claude-501/-Users-deboradeva-creative-factory/0e1735f5-59f7-4048-b4e3-6af5ecc8d41b/scratchpad/captions_v2/cap_16.png"
+  },
+  {
+    "id": 17,
+    "text": "Und das ging auf dein PayPal? So richtig aufs Konto?",
+    "start": 37.899,
+    "end": 41.379,
+    "stt_word_range": [
+      134,
+      143
+    ],
+    "png": "/private/tmp/claude-501/-Users-deboradeva-creative-factory/0e1735f5-59f7-4048-b4e3-6af5ecc8d41b/scratchpad/captions_v2/cap_17.png"
+  },
+  {
+    "id": 18,
+    "text": "PayPal, Geschenkkarten, Überweisung, was du willst, und zwar am selben Tag.",
+    "start": 41.419,
+    "end": 43.86,
+    "stt_word_range": [
+      143,
+      154
+    ],
+    "png": "/private/tmp/claude-501/-Users-deboradeva-creative-factory/0e1735f5-59f7-4048-b4e3-6af5ecc8d41b/scratchpad/captions_v2/cap_18.png"
+  },
+  {
+    "id": 19,
+    "text": "Warum hast du das nicht erzählt? Ich will auch mitzocken.",
+    "start": 43.899,
+    "end": 45.479,
+    "stt_word_range": [
+      154,
+      163
+    ],
+    "png": "/private/tmp/claude-501/-Users-deboradeva-creative-factory/0e1735f5-59f7-4048-b4e3-6af5ecc8d41b/scratchpad/captions_v2/cap_19.png"
+  },
+  {
+    "id": 20,
+    "text": "Ich sag's dir doch jetzt, passt eigentlich perfekt.",
+    "start": 45.739,
+    "end": 47.459,
+    "stt_word_range": [
+      163,
+      171
+    ],
+    "png": "/private/tmp/claude-501/-Users-deboradeva-creative-factory/0e1735f5-59f7-4048-b4e3-6af5ecc8d41b/scratchpad/captions_v2/cap_20.png"
+  },
+  {
+    "id": 21,
+    "text": "Gibt grad 10 Dollar Anmeldebonus für alle, die die App diese Woche holen.",
+    "start": 47.5,
+    "end": 50.679,
+    "stt_word_range": [
+      171,
+      183
+    ],
+    "png": "/private/tmp/claude-501/-Users-deboradeva-creative-factory/0e1735f5-59f7-4048-b4e3-6af5ecc8d41b/scratchpad/captions_v2/cap_21.png"
+  },
+  {
+    "id": 22,
+    "text": "Alles klar, ich lad sie mir runter.",
+    "start": 50.759,
+    "end": 53.379,
+    "stt_word_range": [
+      183,
+      190
+    ],
+    "png": "/private/tmp/claude-501/-Users-deboradeva-creative-factory/0e1735f5-59f7-4048-b4e3-6af5ecc8d41b/scratchpad/captions_v2/cap_22.png"
+  }
+]

@@ -1,0 +1,60 @@
+flowchart LR
+  classDef implemented fill:#d4edda,stroke:#28a745,color:#14532d;
+  classDef humangate fill:#fff3cd,stroke:#d39e00,color:#664d03;
+  classDef external fill:#cfe2ff,stroke:#0d6efd,color:#052c65;
+  classDef future fill:#eeeeee,stroke:#888888,stroke-dasharray: 4 3,color:#555555;
+  classDef devenv fill:#f5e6ff,stroke:#8a2be2,color:#3d1361,stroke-dasharray: 2 2;
+
+  subgraph LEGEND["Legend"]
+    direction LR
+    L1["IMPLEMENTED"]:::implemented
+    L2["HUMAN GATE"]:::humangate
+    L3["EXTERNAL AI/MEDIA"]:::external
+    L4["FUTURE / PRODUCTION"]:::future
+  end
+
+  CC["Claude Code<br/>development environment<br/>(NOT part of runtime execution)"]:::devenv
+
+  subgraph PROTO["IMPLEMENTED PROTOTYPE"]
+    direction TB
+    CLI["CLI / Manifest<br/>run.py validate / compose / qa"]:::implemented
+    PCF["Python Creative Factory<br/>src/*.py"]:::implemented
+    AIP["Specialized AI/Media Providers<br/>Gemini · fal.ai · ElevenLabs"]:::external
+    FF["FFmpeg / ffprobe"]:::implemented
+    QAP["QA<br/>src/qa.py"]:::implemented
+    FS["Filesystem State / Cache / Lineage<br/>state/*.json, reports/*.json"]:::implemented
+    CLI --> PCF --> AIP --> FF --> QAP --> FS
+  end
+
+  CC -.->|"accelerated building/hardening this,<br/>runs standalone via plain python3"| CLI
+
+  subgraph PROD["PRODUCTION EVOLUTION — NOT IMPLEMENTED"]
+    direction TB
+    WEB["Web App / Trigger"]:::future
+    ORCH["[n8n] / Durable Orchestration"]:::future
+    QW["Queue / Workers"]:::future
+    AIP2["AI/Media Providers"]:::future
+    OS["Object Storage"]:::future
+    RQA["Render / QA"]:::future
+    PUB["Publishing / Ad Platform"]:::future
+    PIF["Performance Ingestion"]:::future
+    FB["Feedback into Creative Intelligence"]:::future
+    WEB -.-> ORCH -.-> QW -.-> AIP2 -.-> OS -.-> RQA -.-> PUB -.-> PIF -.-> FB
+    FB -.->|"dashed feedback loop"| ORCH
+  end
+
+  subgraph CP["Production Control Plane — NOT IMPLEMENTED"]
+    direction LR
+    OBS["Observability"]:::future
+    RET["Retries"]:::future
+    IDEM["Idempotency"]:::future
+    COST["Cost Tracking"]:::future
+    ROUTE["Provider Routing"]:::future
+  end
+
+  CP -.-> ORCH
+  CP -.-> QW
+  CP -.-> AIP2
+  CP -.-> RQA
+
+  FS -.->|"production evolution"| WEB

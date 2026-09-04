@@ -1,0 +1,94 @@
+{
+  "challenger": "A",
+  "stages": {
+    "validate_inputs": {
+      "status": "completed",
+      "ts": "2026-09-02T12:13:29Z"
+    },
+    "resolve_assets": {
+      "status": "completed",
+      "ts": "2026-09-02T12:13:29Z",
+      "output": null
+    },
+    "build_timeline": {
+      "status": "completed",
+      "ts": "2026-09-02T12:13:29Z",
+      "output": null
+    },
+    "render": {
+      "status": "completed",
+      "ts": "2026-09-02T12:13:29Z",
+      "output": "final/A_EN.mp4"
+    },
+    "qa": {
+      "status": "completed",
+      "ts": "2026-09-02T12:13:29Z",
+      "output": "final/A_EN.mp4",
+      "result": "PASS"
+    },
+    "qa_de": {
+      "status": "completed",
+      "ts": "2026-09-02T15:24:23Z",
+      "output": "final/A_DE.mp4",
+      "result": "PASS",
+      "qa": {
+        "file_exists": true,
+        "resolution": "1080,1920",
+        "video_codec": "h264",
+        "audio_codec": "aac",
+        "fps": "30/1",
+        "full_decode": "clean, no errors",
+        "duration_seconds": 59.067208,
+        "source_a_en_duration_seconds": 57.454687,
+        "lipsync_segments": [
+          2,
+          7,
+          14,
+          20,
+          21
+        ]
+      },
+      "output_sha256": "2579ae8887fcff140d21bddaf92dc6eea33cc5332b7a981ae11ee4fb604af45e",
+      "output_size_bytes": 19010186
+    },
+    "qa_fr": {
+      "status": "completed",
+      "ts": "2026-09-02T15:46:47Z",
+      "output": "final/A_FR.mp4",
+      "result": "PASS",
+      "qa": {
+        "file_exists": true,
+        "resolution": "1080,1920",
+        "video_codec": "h264",
+        "audio_codec": "aac",
+        "fps": "30/1",
+        "duration_seconds": 61.066667,
+        "full_decode_clean": true,
+        "full_decode_stderr": "",
+        "pass": true
+      },
+      "output_sha256": "55f1155c63b6df1613c621197459e8c580230f7393de37e7eae16b6d4b6e103d",
+      "output_size_bytes": 19195333
+    },
+    "qa_ko": {
+      "status": "completed",
+      "ts": "2026-09-02T16:17:24Z",
+      "output": "final/A_KO.mp4",
+      "result": "PASS",
+      "qa": {
+        "file_exists": true,
+        "resolution": "1080,1920",
+        "video_codec": "h264",
+        "audio_codec": "aac",
+        "fps": "30/1",
+        "duration_seconds": 64.633333,
+        "full_decode_clean": true,
+        "full_decode_stderr": "",
+        "pass": true
+      },
+      "output_sha256": "4431306fa8562bf761696c0a2bebc84a26defd5f5da7ef0493a95663ff840f09",
+      "output_size_bytes": 20089057
+    }
+  },
+  "updated_at": "2026-09-02T16:17:24Z"
+}

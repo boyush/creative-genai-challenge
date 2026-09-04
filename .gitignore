@@ -1,0 +1,38 @@
+# Secrets
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# macOS
+.DS_Store
+
+# Generated / temporary media
+assets/generated/
+state/smoke/
+review/
+
+# Large source and final videos
+input/*.mp4
+final/*.mp4
+
+# Temporary files
+*.tmp
+*.log
+
+# Local AI development environment
+.claude/
+CLAUDE.md
+
+# Extracted source media
+assets/extracted/
+
+# Extracted source media
+assets/extracted/

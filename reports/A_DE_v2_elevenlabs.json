@@ -1,0 +1,90 @@
+{
+  "purpose": "Full A_DE rebuild candidate v2, using ElevenLabs Dubbing (validated by human review of the earlier 7s sample) in place of the original Chatterbox per-segment pipeline. Output is a candidate for human QA -- final/A_DE.mp4 (v1) is untouched.",
+  "status": "human_review_pending",
+  "provider": {
+    "name": "ElevenLabs",
+    "product": "Dubbing API",
+    "api_model_field_returned": "dubbing_v1",
+    "endpoint_create": "POST https://api.elevenlabs.io/v1/dubbing",
+    "endpoint_download": "GET https://api.elevenlabs.io/v1/dubbing/{dubbing_id}/audio/{language_code}",
+    "dubbing_id": "ty9pvamkoliut6kMiJLr",
+    "expected_duration_sec_at_submit": 70.08,
+    "actual_returned_duration_sec": 57.54
+  },
+  "request_settings": {
+    "target_lang": "de",
+    "source_lang": "en",
+    "num_speakers": 2,
+    "watermark": true,
+    "drop_background_audio": false,
+    "highest_resolution": false,
+    "mode": "automatic"
+  },
+  "watermark_caveat": "watermark=true required by current account tier; account was upgraded mid-session to clear a credit quota block, but watermark-free dubbing was not separately re-verified as unlocked, so watermark=true was kept as the last-known-required/permitted configuration rather than spending another generation call to test removing it.",
+  "upload_note": "The full-resolution final/A_EN.mp4 (23.5MB) failed twice with a client-side upload timeout (HTTP 000, no response, no job created, no charge) on this connection. Submitted a video-downscaled copy (540x960, same audio bitrate 192k AAC) instead -- ElevenLabs' own returned video track is discarded entirely; only its dubbed AUDIO track is used, remuxed onto the original untouched full-resolution final/A_EN.mp4 video. Source video resolution supplied to ElevenLabs therefore has no bearing on output video quality.",
+  "source": {
+    "file": "final/A_EN.mp4",
+    "duration_sec": 57.4547,
+    "full_video_used": true,
+    "note": "Unlike the earlier 7s sample, this is a full-video dub, not a segment extract."
+  },
+  "output": {
+    "file": "review/A_DE_v2.mp4",
+    "video_track_source": "final/A_EN.mp4 (original, untouched, full resolution)",
+    "audio_track_source": "ElevenLabs dubbing_id ty9pvamkoliut6kMiJLr, German, trimmed to video length (57.4547s; raw returned audio was 57.54s, 0.08s longer)",
+    "is_lip_synced": false,
+    "captions": "German captions burned in (see methodology below), reusing existing Gemini translation wording from reports/A_DE_translation.json, retimed to the actual ElevenLabs audio."
+  },
+  "caption_retiming_methodology": {
+    "approach": "STT-anchored proportional word-count mapping",
+    "steps": [
+      "1. Ran ElevenLabs Scribe v2 STT (word-level timestamps, language_code=de) on the ElevenLabs-dubbed audio.",
+      "2. Kept the original 23 Gemini-translated caption lines (reports/A_DE_translation.json) verbatim -- wording not regenerated from STT, per instruction to keep existing localized captions.",
+      "3. Each caption line's word count was scaled by the ratio of ElevenLabs' actual spoken word count (190) to the Gemini script's word count (199, ratio 0.955) and mapped cumulatively onto the ordered STT word timestamps to assign each line a start/end time anchored to real audio."
+    ],
+    "limitation": "This assumes line order and roughly proportional word density hold between the two independently-produced German translations (Gemini's script vs ElevenLabs' own internal translation). The 0.955 word-count ratio suggests they are close in length, supporting the assumption, but this is a heuristic, not a forced/phoneme-level alignment -- individual caption line boundaries may be off by a word or so and should be checked in human review alongside audio quality.",
+    "detail_file": "reports/A_DE_v2_captions.json"
+  },
+  "technical_qa": {
+    "playable": true,
+    "audio_stream_present": true,
+    "video_codec": "h264",
+    "audio_codec": "aac",
+    "resolution": "1080x1920",
+    "audio_sample_rate": 48000,
+    "audio_channels": 2,
+    "duration_sec": 57.47,
+    "clean_full_decode": true,
+    "audio_level_check": {"mean_volume_db": -27.5, "max_volume_db": -6.2, "note": "non-silent, plausible dialogue levels"}
+  },
+  "localization_qa_automated": {
+    "detected_language_code": "deu",
+    "detected_language_probability": 1.0,
+    "english_leakage_heuristic": {
+      "method": "keyword match of common English stopwords against every STT-recognized spoken word",
+      "raw_hits": ["cash", "cash", "was"],
+      "corrected_finding": "0 genuine English-leakage hits after review: 'cash' both occur inside the brand name 'Free Cash' / 'Freecash', spoken intentionally as-is (a proper noun, not translated, consistent with locked-variable brand handling); 'was' is the German word for 'what', a false positive of the naive keyword list, not English. No other candidate leakage words found.",
+      "caveat": "This is a keyword heuristic, not a verified absence-of-accent or fluency judgment -- human listening review remains required, especially for the two 'Free Cash' brand-name utterances (worth checking they don't sound like an unintended English-accent slip vs. an intentional un-translated brand mention)."
+    },
+    "speech_rate": {
+      "elevenlabs_actual_words_per_second": 3.573,
+      "elevenlabs_spoken_span_sec": 53.18,
+      "reference_natural_pace_estimate_sec": 79.0,
+      "reference_basis": "Sum of the old Chatterbox pipeline's uncompressed raw TTS render durations for the same dialogue (82.74s, reports/A_DE_dub_manifest.json raw_duration fields), scaled by the 0.955 word-count ratio between that script and ElevenLabs' own translation, as a rough same-content proxy.",
+      "implied_relative_pace": "~1.49x faster than that natural-pace reference (53.18s actual vs ~79.0s estimated natural)",
+      "caveat": "This reference uses a DIFFERENT (Gemini-authored) German translation, not ElevenLabs' own script, so it is an approximation, not a controlled apples-to-apples measurement, and 'natural TTS pace' is itself just one system's rendering, not a verified human-natural baseline. Flagging as a real, measured signal worth factoring into the 'no aggressive time compression' requirement during human review -- not an automatic pass/fail."
+    },
+    "caption_coverage_pct": 89.2
+  },
+  "perceptual_quality": {
+    "status": "NOT_EVALUATED_BY_CLAUDE",
+    "note": "Per explicit instruction, perceptual quality (native pronunciation, cadence, voice similarity, absence of English accent, background-audio preservation quality, brand-name pronunciation) is NOT auto-declared PASS. Requires human listening review, informed by the speech-rate flag above."
+  },
+  "scope_confirmation": {
+    "fal_ai_lip_sync_applied": false,
+    "fr_ko_regenerated": false,
+    "challenger_B_or_C_touched": false,
+    "final_A_DE_overwritten": false,
+    "chatterbox_higgsfield_replicate_heygen_used": false
+  }
+}

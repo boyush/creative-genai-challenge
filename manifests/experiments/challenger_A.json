@@ -1,0 +1,86 @@
+{
+  "experiment_id": "challenger_A",
+  "parent": "winner_01",
+  "primary_variable": "hook_proof_timing",
+  "causal_claim": false,
+  "hypothesis": "Test an outcome-first opening with earlier monetary proof while preserving the parent's core persuasion architecture.",
+  "locked_variables": [
+    "core_proposition",
+    "financial_tension",
+    "specific_money_proof",
+    "objection_handling",
+    "trust_proof",
+    "product_ui",
+    "gameplay_demo",
+    "payout_methods",
+    "signup_offer",
+    "cta_architecture"
+  ],
+  "mutation": {
+    "original": "restaurant_context_then_question_then_proof",
+    "challenger": "outcome_question_then_immediate_proof_then_explanation"
+  },
+  "hook": {
+    "target_duration_seconds": 5,
+    "generation_priority": "reuse_first",
+    "scene_1": {
+      "purpose": "outcome_question",
+      "target_duration_seconds": 2,
+      "preferred_caption": "He paid for dinner by playing games?"
+    },
+    "scene_2": {
+      "purpose": "immediate_monetary_proof",
+      "target_duration_seconds": 3,
+      "preferred_caption": "Apparently... yes.",
+      "must_use_real_source_proof": true
+    }
+  },
+  "required_sections": [
+    "hook",
+    "product_reveal",
+    "objection",
+    "trust_proof",
+    "product_demo",
+    "earnings_proof",
+    "payout_proof",
+    "offer",
+    "cta"
+  ],
+  "output": {
+    "master": "final/A_EN.mp4",
+    "aspect_ratio": "9:16",
+    "resolution": "1080x1920"
+  },
+  "source_references": {
+    "source_file": "input/winner_01.mp4",
+    "inventory_report": "reports/winner_01_asset_inventory.json",
+    "validated": true,
+    "hook_can_be_built_from_existing_footage": true,
+    "hook_scene_1_source": {
+      "segment": "hook_restaurant_a+b",
+      "in": 0.00,
+      "out": 2.67,
+      "action": "trim to ~2.0s, caption swap only"
+    },
+    "hook_scene_2_source": {
+      "segment": "earnings_proof_1",
+      "in": 4.80,
+      "out": 6.57,
+      "action": "caption swap; extend 1.77s clip to ~3s target via deterministic hold/speed-ramp (no generation)"
+    },
+    "required_sections_map": {
+      "hook": { "in": 0.00, "out": 6.57 },
+      "product_reveal": { "in": 6.57, "out": 12.50 },
+      "objection": [
+        { "in": 16.10, "out": 18.90 },
+        { "in": 29.50, "out": 41.67 }
+      ],
+      "trust_proof": { "in": 18.90, "out": 23.80 },
+      "product_demo": { "in": 23.80, "out": 29.50 },
+      "earnings_proof": { "in": 4.80, "out": 6.57 },
+      "payout_proof": { "in": 41.67, "out": 45.10 },
+      "offer": { "in": 45.10, "out": 59.00 },
+      "cta": { "in": 53.40, "out": 59.00 }
+    }
+  }
+}

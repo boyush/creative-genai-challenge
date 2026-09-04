@@ -1,0 +1,102 @@
+{
+  "experiment_id": "challenger_B_visual_pattern_interrupt",
+  "parent": "input/winner_01.mp4 (via Challenger A persuasion architecture)",
+  "primary_variable": "visual_pattern_interrupt",
+  "causal_claim": false,
+  "locked_variables": [
+    "core proposition", "financial tension", "monetary specificity",
+    "objection handling", "trust/payment proof", "product UI",
+    "gameplay/product demonstration", "payout methods", "signup offer",
+    "CTA architecture", "believable TikTok-native UGC aesthetic"
+  ],
+  "v1": {
+    "status": "human_qa_rejected",
+    "human_review_decision": "rejected",
+    "human_review_decision_date": "2026-09-03",
+    "hypothesis": "A visually surprising but believable generative opening may increase initial attention while transitioning rapidly into genuine monetary/product proof.",
+    "output": "final/B_EN.mp4",
+    "output_duration_sec": 58.344,
+    "preserved_as": "rejected iteration evidence -- NOT overwritten by v2 work",
+    "generation": {
+      "provider": "fal.ai",
+      "endpoint_id": "alibaba/happy-horse/text-to-video",
+      "request_id": "01a06835-8c6c-7460-bed3-500501f19dee",
+      "input_params": {"duration": 4, "resolution": "1080p", "aspect_ratio": "9:16"},
+      "prompt": "Vertical phone-camera style video, handheld selfie framing, natural indoor restaurant lighting, shallow depth of field. A young adult in casual clothes sits at a restaurant table with food, glancing at their phone with a slightly worried, tense expression, like they are stressed about the bill. In the first second, a sudden startling burst of warm golden light sweeps across the frame like a camera flash or lens flare hitting the lens, creating an eye-catching visual jolt. The person's eyes widen and they sit up straighter, reacting with surprise. Natural handheld camera shake, slight authentic zoom, amateur social-media video quality, realistic skin and fabric texture, candid unpolished look. No on-screen text, no logos, no app interface, no subtitles, no cinematic color grading, no slow motion -- documentary-style raw realism throughout.",
+      "estimated_cost_usd": 0.56,
+      "seed": 180334520,
+      "actual_duration_sec": 4.122667,
+      "candidates_generated": 1
+    },
+    "reused_segments": [
+      {"role": "real monetary/payment proof", "source": "input/winner_01.mp4", "source_range_s": [4.8, 6.57]},
+      {"role": "product reveal, objection handling, trust proof, gameplay demo, $43 earnings claim, payout methods, signup offer, CTA", "source": "input/winner_01.mp4", "source_range_s": [6.57, 59.0]}
+    ],
+    "known_limitation_flagged": "Generated hook's actor did not visually match the real source creator's face/appearance in the reused footage that follows.",
+    "qa_at_build_time": "Technical QA passed (1080x1920, H.264/AAC, clean decode, audio present, $43 preserved, real UI/proof preserved). Rejected on human review despite passing technical QA."
+  },
+  "v2": {
+    "status": "in_progress",
+    "hypothesis": "Strengthening the existing restaurant/payment tension with a visual pattern interrupt may improve opening attention while keeping the winner's proposition and authentic proof unchanged.",
+    "creative_change_from_v1": "Switched from a face-forward protagonist reaction shot to a POV/table-focused shot (no identifiable hero face) of a server placing the bill on the table -- directly dramatizes 'time to pay' tension rather than a generic surprised-reaction hook, and avoids the v1 actor-identity-mismatch problem entirely by never showing a face.",
+    "generation": {
+      "provider": "fal.ai",
+      "endpoint_id": "alibaba/happy-horse/text-to-video",
+      "request_id": "01a06843-a266-7203-b2ce-3d7749ab0ff3",
+      "status_url": "https://queue.fal.run/alibaba/happy-horse/requests/01a06843-a266-7203-b2ce-3d7749ab0ff3/status",
+      "response_url": "https://queue.fal.run/alibaba/happy-horse/requests/01a06843-a266-7203-b2ce-3d7749ab0ff3",
+      "input_params": {"duration": 3, "resolution": "1080p", "aspect_ratio": "9:16"},
+      "prompt": "Native amateur smartphone POV video, handheld, looking down at a casual restaurant table from above at an angle, as if someone set their phone down mid-meal. No faces or people visible, only hands and table. Plates with half-eaten food, a glass, cutlery scattered naturally on a plain wooden table. A server's hand and forearm quickly reaches into frame from the side and places a folded paper restaurant bill/check onto the table right in front of the camera, then pulls the hand away. Slight natural handheld camera wobble/reaction as the bill lands, like the phone got slightly bumped. The receipt paper is blurry, out of focus, and its text is illegible -- no readable numbers or words on it. Ordinary unpolished phone-camera video quality, realistic natural lighting, slightly noisy/grainy image, no cinematic color grading, no slow motion, no dramatic camera movement. No logos, no app screens, no on-screen text or graphics anywhere in the shot.",
+      "cost_basis": "$0.14/sec x 3s (fal.ai pricing at submission time)",
+      "estimated_cost_usd": 0.42,
+      "candidates_generated": 1,
+      "generation_discipline": "ONE candidate submitted first; inspected before composition per instruction. A second candidate is generated only if this one clearly fails inspection."
+    },
+    "reused_segments_planned": {
+      "segments": [
+        {"role": "real monetary/payment proof", "source": "input/winner_01.mp4", "source_range_s": [4.8, 6.57]},
+        {"role": "product reveal, objection handling, trust proof, gameplay demo, $43 earnings claim, payout methods, signup offer, CTA", "source": "input/winner_01.mp4", "source_range_s": [6.57, 59.0]}
+      ],
+      "note": "Same real source ranges as v1 -- cut directly from generated bill-arrival hook into real proof, no explanatory generated scene in between, per instruction."
+    },
+    "generation_result": {
+      "seed": 1986443378,
+      "actual_duration_sec": 3.162667,
+      "resolution": "1080x1920",
+      "fps": 24,
+      "candidates_generated": 1,
+      "inspection": {
+        "method": "Extracted 7 frames across the clip (0.1s-3.0s) and visually inspected each.",
+        "findings": "Hand anatomically plausible (5 fingers, natural grip and proportions) during the placement motion; hand fully retreats by ~1.0s. Receipt paper shows illegible pseudo-text/gibberish glyphs, not real readable numbers or words -- satisfies the unreadable-receipt constraint. No faces, no logos, no app UI, no cinematic camera movement. Plates, cutlery, glass, and table are plausible and consistent with a casual restaurant setting. Shot clearly communicates 'restaurant bill just arrived.' Judged usable on first generation -- no second candidate generated."
+      },
+      "improvement_over_v1": "No identifiable protagonist face at all (POV/table-focused composition), so the v1 actor-identity-mismatch problem does not apply to v2."
+    },
+    "composed_from": {
+      "generated_hook_sec": "0-3.16",
+      "real_proof_and_body_sec": "3.16-57.4 (winner_01.mp4 4.8-59.0, same real footage as v1, no explanatory generated scene inserted between hook and proof)"
+    },
+    "output": "review/B_EN_v2.mp4",
+    "output_duration_sec": 57.4,
+    "qa": {
+      "resolution": "1080x1920",
+      "video_codec": "h264",
+      "audio_codec": "aac",
+      "clean_full_decode": true,
+      "audio_present": true,
+      "audio_levels": {"mean_volume_db": -24.7, "max_volume_db": -1.5},
+      "generated_hook_visibly_present": true,
+      "transition_to_real_proof_verified": "Frame-checked at ~3.4s: real PayPal wallet balance screenshot with its original source caption, unmodified, cuts in immediately after the generated bill-drop hook.",
+      "43_dollar_claim_preserved": true,
+      "43_claim_verification_method": "Full-file STT (ElevenLabs Scribe v2) on review/B_EN_v2.mp4 confirms '43' present in the transcript.",
+      "hallucinated_ui_or_payment_proof": false,
+      "cta_architecture_preserved": true
+    },
+    "status": "human_qa_frozen_as_experimental_candidate",
+    "human_review_decision": "acceptable for experimental deployment; incremental creative value uncertain; requires performance validation",
+    "human_review_decision_date": "2026-09-03",
+    "human_review_note": "Explicitly NOT claimed to improve performance over the winning creative or over B v1. Frozen as a testable candidate pending real performance data, not as a declared winner. Generative AI proposed a creative hypothesis (visual_pattern_interrupt); it does not declare winners -- that requires performance validation this manifest does not and cannot claim.",
+    "promoted_to": "final/B_EN_v2.mp4",
+    "review_copy": "review/B_EN_v2.mp4",
+    "frozen": true
+  }
+}

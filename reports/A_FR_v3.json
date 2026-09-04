@@ -1,0 +1,95 @@
+{
+  "purpose": "Full A_FR rebuild using the human-approved natural-French-TTS architecture (review/A_FR_natural_voice_test.mp4), replacing the rejected Dubbing v2 (A_FR_v2) approach. Per-segment natural French TTS, adaptive video timing (loop real motion, no forced compression), selective fal.ai lip-sync, French burned captions.",
+  "status": "human_review_pending",
+  "architecture": "Existing Gemini French translation (reports/A_FR_translation.json, reused verbatim, no new Gemini calls) -> ElevenLabs native French TTS (per-segment, natural duration) -> adaptive video timing per segment -> fal.ai lip-sync on visible-speaking segments -> burned-in French captions -> concat -> QA.",
+  "voice": {
+    "provider": "ElevenLabs Text-to-Speech (not Dubbing v2)",
+    "model_id": "eleven_multilingual_v2",
+    "voice_id": "rlqCQzyNTVyUMPGBqC31",
+    "voice_name": "Yann - Warm & Deep Storyteller (fr-FR Voice Library, not a clone of the source speaker)",
+    "voice_settings": {"stability": 0.5, "similarity_boost": 0.75, "style": 0.3, "use_speaker_boost": true},
+    "same_config_as": "review/A_FR_natural_voice_test.mp4 (human-approved)"
+  },
+  "per_segment_generation": {
+    "num_segments": 23,
+    "source_of_text": "reports/A_FR_translation.json localized_text, unchanged",
+    "generation_method": "One ElevenLabs TTS call per segment (not one call for the whole script), so each segment's natural duration is known individually for per-segment video adaptation and caption timing.",
+    "assets_persisted": "assets/generated/challenger_A/fr_v3/tts/seg_NN.mp3 (checkpointed -- reruns skip already-generated segments)",
+    "total_original_dialogue_duration_sec": 50.1,
+    "total_natural_french_duration_sec": 61.9,
+    "delta_sec": 11.8,
+    "delta_pct": "+23.5%",
+    "per_segment_deltas_sec": {
+      "0": 0.57, "1": 1.60, "2": 0.51, "3": -0.23, "4": -0.01, "5": 1.86, "6": -0.51,
+      "7": 0.67, "8": 0.94, "9": -0.01, "10": 1.26, "11": 0.65, "12": -0.35, "13": -0.34,
+      "14": -0.34, "15": 1.31, "16": 0.03, "17": 0.62, "18": 0.59, "19": 1.17, "20": 0.14,
+      "21": 1.96, "22": -0.27
+    },
+    "no_time_compression_applied": true
+  },
+  "video_adaptation": {
+    "method_non_lipsync_segments": "Original segment footage looped (ffmpeg -stream_loop, real motion repeated, not a static freeze) when natural French audio needed more time than the original English segment; trimmed when shorter. This follows the instructed priority of extending reusable real motion over freeze-holds.",
+    "method_lipsync_segments": "fal.ai sync-lipsync v2 pro called with sync_mode='loop': the model itself extends/loops the source video to match the natural French audio duration while generating matching mouth movement, rather than us pre-extending video before lip-sync.",
+    "freeze_holds_used": false,
+    "segment_with_largest_extension": {"id": 21, "delta_sec": 1.96, "note": "3.10s -> 5.06s natural French, a lip-sync segment (fal loop-extended); worth a specific look in review for any looping artifact given the size of the stretch."}
+  },
+  "lipsync": {
+    "provider": "fal.ai",
+    "model": "fal-ai/sync-lipsync/v2/pro (same approved model used for the frozen A_DE/A_FR/A_KO v1 builds)",
+    "sync_mode": "loop",
+    "segments": [2, 7, 14, 20, 21],
+    "segment_selection_rationale": "Same lipsync_segment_ids as the already-approved v1 pipeline (onscreen_mouth_speaking_this_line AND visual_content=='creator_talking_head').",
+    "results": {
+      "2": {"target_sec": 2.51, "output_sec": 2.57},
+      "7": {"target_sec": 2.37, "output_sec": 2.43},
+      "14": {"target_sec": 1.86, "output_sec": 1.90},
+      "20": {"target_sec": 2.14, "output_sec": 2.18},
+      "21": {"target_sec": 5.06, "output_sec": 5.10, "note": "needed 2 retries due to transient network timeouts, not a generation-quality issue; succeeded on 3rd attempt."}
+    },
+    "audio_source_confirmation": "Each lip-sync call's audio_url was the segment's own French TTS audio (assets/generated/challenger_A/fr_v3/tts/seg_NN.mp3 -> uploaded aac). fal.ai's response video was re-muxed with -map 1:a from that same fal output (never from original English), so the original English audio cannot have re-entered the mix for these 5 segments.",
+    "persisted": "assets/generated/challenger_A/fr_v3/lipsync/seg_NN_lipsynced.mp4, checkpointed before any local compose step, per idempotency instruction."
+  },
+  "captions": {
+    "text_source": "reports/A_FR_translation.json localized_text, unchanged (same wording as A_FR_v2/A_FR.mp4)",
+    "timing": "Captions are built and burned per-segment onto each segment's own final-duration clip, so caption timing is exact to that segment's actual natural French audio -- no separate STT-based retiming pass was needed (unlike the Dubbing v2 builds, where ElevenLabs' own translation text differed from ours and required STT-anchored retiming).",
+    "style": "Same font/placement/black-bar style as all prior Challenger A localizations (Arial Black, black bar y=1090-1490, white text with black stroke) -- mobile-safe, does not cover the upper 1090px where UI/payment-proof screenshots appear.",
+    "language_check": "All 23 caption lines are French text taken directly from the approved translation file; none were regenerated or altered."
+  },
+  "technical_qa": {
+    "playable": true, "clean_full_decode": true, "video_codec": "h264", "audio_codec": "aac",
+    "resolution": "1080x1920", "audio_sample_rate": 48000, "audio_channels": 2,
+    "duration_sec": 69.73,
+    "audio_level_check": {"mean_volume_db": -24.7, "max_volume_db": -5.7}
+  },
+  "localization_qa_automated": {
+    "detected_language_code": "fra", "detected_language_probability": 1.0,
+    "MONETARY_VALUE_VERIFICATION": {
+      "check": "$43 claim",
+      "result": "PASS -- confirmed spoken as 'quarante-trois dollars' (43) in the final assembled audio via full-file STT, not 33 as in the failed A_FR_v2. Text was also verified directly in reports/A_FR_translation.json id14 before generation: '43 dollars depuis ce matin,'."
+    },
+    "CONFIRMED_DEFECT_ENGLISH_LEAKAGE": {
+      "severity": "FAIL -- confirmed, not a heuristic guess",
+      "summary": "The video's tail (originally 50.1s-57.4547s of final/A_EN.mp4, appended UNTRANSLATED/UNCHANGED at the end of A_FR_v3 -- now at ~62.37-69.73s in the new timeline) contains real spoken English: 'All right, I'm getting it' at 62.88-63.92s, immediately after segment 22's correct French line 'C'est bon, je la télécharge' (same meaning). This is genuine English-dialogue leakage AND duplicated/overlapping dialogue (two back-to-back renderings, French then English, of the same line) -- both explicitly-checked QA gates.",
+      "root_cause": "This tail was deliberately left as original/untouched based on a build-time assumption (confirmed via two smaller manual STT spot-checks before the full build) that it was ambient/SFX-only. That assumption was WRONG -- it was checked at 50.1s and 51.0s starts and both returned similar-sounding phrases, which was misread as probable STT hallucination on music rather than genuine trailing dialogue. The full-file STT run after assembly now conclusively shows real English speech there, plus a notification SFX right at the very end.",
+      "fix_not_yet_applied": "Per instruction not to make unrequested changes mid-review, this was NOT patched. Two fix options for a follow-up: (a) translate/TTS+caption this tail line too and append it properly, or (b) trim the video to end at the true last French line (~62.37s) if this tail line is redundant/unwanted in the final ad. Needs a decision from you."
+    },
+    "FLAGGED_FOR_LISTENING_REVIEW": {
+      "segment_id": 6,
+      "text": "Et après, ils te ghostent.",
+      "approx_timestamp_sec": 16.9,
+      "finding": "STT transcribed this span as 'build to ghost' rather than a recognizable rendering of 'ils te ghostent'. 'Ghoster' as a verb is a French slang/franglais borrowing from English, which may be harder for the TTS model to pronounce naturally in French -- could be a genuine mispronunciation, or an STT quirk on an unusual loanword. Worth a specific listen at ~17s; not counted as English leakage since the underlying text and intent are French, but flagged as a possible pronunciation issue."
+    },
+    "caption_language_check": "All 23 burned captions confirmed French by construction (direct from reports/A_FR_translation.json, not regenerated)."
+  },
+  "perceptual_quality": {
+    "status": "NOT_EVALUATED_BY_CLAUDE",
+    "note": "Pronunciation, lip-sync visual quality/matching, and overall naturalness NOT auto-approved. Specifically flagging for your listen: (1) the confirmed English-leakage tail defect above, (2) the 'ghostent' pronunciation at ~17s, (3) segment 21's large loop-extension (3.10s->5.06s) for any visible looping artifact."
+  },
+  "scope_confirmation": {
+    "ko_touched": false,
+    "challenger_B_or_C_touched": false,
+    "new_gemini_calls_made": false,
+    "chatterbox_higgsfield_replicate_heygen_used": false,
+    "final_A_FR_or_A_FR_v2_overwritten": false
+  }
+}

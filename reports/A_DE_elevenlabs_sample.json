@@ -1,0 +1,61 @@
+{
+  "purpose": "W3 localization quality test only - evaluates ElevenLabs Dubbing v1 API voice quality independently, before any lip-sync or production decision.",
+  "status": "human_review_pending",
+  "provider": {
+    "name": "ElevenLabs",
+    "product": "Dubbing API",
+    "api_model_field_returned": "dubbing_v1",
+    "endpoint_create": "POST https://api.elevenlabs.io/v1/dubbing",
+    "endpoint_download": "GET https://api.elevenlabs.io/v1/dubbing/{dubbing_id}/audio/{language_code}",
+    "dubbing_id": "QzlenRmNG2REbCJGUhdK"
+  },
+  "request_settings": {
+    "target_lang": "de",
+    "source_lang": "en",
+    "num_speakers": 1,
+    "watermark": true,
+    "drop_background_audio": false,
+    "highest_resolution": false,
+    "mode": "automatic"
+  },
+  "watermark_caveat": "watermark=true was required because the connected ElevenLabs account is on the free tier; watermark-free dubbing requires a Starter+ subscription. ElevenLabs applies a watermark to free-tier dubs, which may affect the sample and should be factored into human perceptual review. A clean re-run is possible if/when the account is upgraded.",
+  "source": {
+    "file": "final/A_EN.mp4",
+    "segment_start_sec": 13.9,
+    "segment_end_sec": 20.8,
+    "segment_duration_sec": 6.93,
+    "transcript_segment_ids": [7, 8, 9],
+    "transcript_text": "I know, most of them take ages. That's why Freecash has a 4.7 on Trustpilot, and they pay me on the same day, so the money's solid.",
+    "selection_rationale": "Continuous visible-speaking (onscreen_mouth_speaking_this_line=true per reports/A_EN_speaker_visual_analysis.json) creator talking-head section with no cuts; contains specific claims (brand name, rating, timing) useful for judging native German pronunciation of numbers/proper nouns and natural cadence.",
+    "no_new_extraction_performed_on_final_assets": "Source clip was extracted read-only from final/A_EN.mp4 into a scratch temp file for submission; final/A_EN.mp4 and all other final/A_*.mp4 assets were not modified."
+  },
+  "output": {
+    "file": "review/A_DE_elevenlabs_sample.mp4",
+    "is_lip_synced": false,
+    "note": "Audio track only was replaced with ElevenLabs' German dub; original video/mouth movement is untouched (English lip movement). fal.ai lip-sync intentionally NOT applied, per scope."
+  },
+  "technical_validation": {
+    "playable": true,
+    "audio_stream_present": true,
+    "video_codec": "h264",
+    "audio_codec": "aac",
+    "resolution": "1080x1920",
+    "audio_sample_rate": 44100,
+    "audio_channels": 1,
+    "duration_sec": 6.96,
+    "clean_full_decode": true,
+    "method": "ffprobe stream inspection + ffmpeg -f null full decode with zero stderr output"
+  },
+  "perceptual_quality": {
+    "status": "NOT_EVALUATED_BY_CLAUDE",
+    "note": "Per explicit instruction, perceptual quality (native pronunciation, cadence, voice similarity, absence of English accent/leakage, background audio preservation quality) is NOT auto-declared PASS. This requires human listening review."
+  },
+  "scope_confirmation": {
+    "fal_ai_lip_sync_applied": false,
+    "full_A_DE_rebuild": false,
+    "fr_ko_regenerated": false,
+    "challenger_B_or_C_touched": false,
+    "existing_final_assets_overwritten": false,
+    "cost_note": "Single ~7s sample dub call; well within prior authorized budget."
+  }
+}

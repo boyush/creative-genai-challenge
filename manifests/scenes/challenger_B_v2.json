@@ -1,0 +1,25 @@
+{
+  "output": "final/B_EN_v2.mp4",
+  "note": "Documents the real, human-QA-approved Challenger B v2 composition (manifests/experiments/challenger_B.json 'v2'). The 'generated_hook' segment resolves from the cached fal.ai asset already on disk -- re-running this manifest makes zero paid provider calls. Never pass this manifest's default 'output' straight through: use --out to target a smoke/scratch path so the frozen final/B_EN_v2.mp4 is never overwritten by a re-run.",
+  "segments": [
+    {
+      "id": "generated_hook",
+      "kind": "generated",
+      "generation": {
+        "cache_path": "assets/generated/challenger_B_v2/hook_gen_v2.mp4",
+        "provider": "fal.ai",
+        "endpoint_id": "alibaba/happy-horse/text-to-video",
+        "request_id": "01a06843-a266-7203-b2ce-3d7749ab0ff3",
+        "prompt": "Native amateur smartphone POV video, handheld, looking down at a casual restaurant table from above at an angle, as if someone set their phone down mid-meal. No faces or people visible, only hands and table. Plates with half-eaten food, a glass, cutlery scattered naturally on a plain wooden table. A server's hand and forearm quickly reaches into frame from the side and places a folded paper restaurant bill/check onto the table right in front of the camera, then pulls the hand away. Slight natural handheld camera wobble/reaction as the bill lands, like the phone got slightly bumped. The receipt paper is blurry, out of focus, and its text is illegible -- no readable numbers or words on it. Ordinary unpolished phone-camera video quality, realistic natural lighting, slightly noisy/grainy image, no cinematic color grading, no slow motion, no dramatic camera movement. No logos, no app screens, no on-screen text or graphics anywhere in the shot.",
+        "input_params": {"duration": 3, "resolution": "1080p", "aspect_ratio": "9:16"}
+      }
+    },
+    {
+      "id": "real_proof_body",
+      "kind": "source",
+      "source": "input/winner_01.mp4",
+      "in": 4.8,
+      "out": 59.0
+    }
+  ]
+}

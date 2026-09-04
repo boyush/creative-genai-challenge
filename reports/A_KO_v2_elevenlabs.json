@@ -1,0 +1,61 @@
+{
+  "purpose": "A_KO v2 candidate using the ElevenLabs Dubbing workflow validated and approved for A_DE v2. Source: final/A_EN.mp4 (not the German dub).",
+  "status": "human_review_pending",
+  "provider": {
+    "name": "ElevenLabs", "product": "Dubbing API", "api_model_field_returned": "dubbing_v1",
+    "dubbing_id": "xAh8pFIkE3hxjq8DwY0C"
+  },
+  "request_settings": {
+    "target_lang": "ko", "source_lang": "en", "num_speakers": 2,
+    "watermark": true, "drop_background_audio": false, "highest_resolution": false, "mode": "automatic"
+  },
+  "watermark_caveat": "watermark=true kept, same as approved A_DE v2 configuration; not re-tested for removal per instruction not to spend a generation call on that.",
+  "upload_note": "Reused the same downscaled 540x960 upload copy of final/A_EN.mp4 already produced for the DE build. Output video track is the original full-resolution final/A_EN.mp4; only ElevenLabs' audio track is used.",
+  "source": {"file": "final/A_EN.mp4", "duration_sec": 57.4547, "full_video_used": true},
+  "output": {
+    "file": "review/A_KO_v2.mp4",
+    "video_track_source": "final/A_EN.mp4 (original, untouched, full resolution)",
+    "audio_track_source": "ElevenLabs dubbing_id xAh8pFIkE3hxjq8DwY0C, Korean, trimmed to video length",
+    "is_lip_synced": false,
+    "captions": "Existing Gemini Korean translation wording (reports/A_KO_translation.json localized_text) kept verbatim, retimed to the actual ElevenLabs audio via the same STT-anchored proportional word-count method used for A_DE v2 (see reports/A_KO_v2_captions.json). Caveat: Korean word/spacing segmentation is a rougher proxy for line boundaries than for European languages -- treat per-line caption timing as lower-confidence than DE/FR."
+  },
+  "technical_qa": {
+    "playable": true, "audio_stream_present": true, "video_codec": "h264", "audio_codec": "aac",
+    "resolution": "1080x1920", "audio_sample_rate": 48000, "audio_channels": 2,
+    "duration_sec": 57.47, "clean_full_decode": true,
+    "audio_level_check": {"mean_volume_db": -27.4, "max_volume_db": -4.8}
+  },
+  "localization_qa_automated": {
+    "detected_language_code": "kor", "detected_language_probability": 1.0,
+    "word_count_ratio_actual_over_script": 1.157,
+    "words_per_second": 2.848,
+    "ENGLISH_LEAKAGE_FINDING": {
+      "severity": "LIKELY_FAIL -- concrete defect, not a heuristic false positive",
+      "summary": "Two full, grammatical, nonsensical ENGLISH sentences are embedded in the Korean audio, per direct Scribe v2 transcription (language detected as Korean at 100% confidence for the file overall, but these specific spans are unambiguous English, not brand names or loanwords):",
+      "instances": [
+        {
+          "text": "insurance society shows with me free cash is true",
+          "timestamp_sec": [4.48, 6.819],
+          "context": "Appears where the dialogue should be discussing the '5 bucks in your account' / 'played Freecash this morning' beats. Not a coherent translation of the source line at that point."
+        },
+        {
+          "text": "When your slime bursts, you search the restoration.",
+          "timestamp_sec": [32.02, 33.399],
+          "context": "Appears adjacent to (after) a correctly-translated Korean rendering of 'how much are we actually talking, realistically?' -- looks like an erroneous extra/duplicate insertion rather than a needed translation, but is unambiguously nonsensical English audio."
+        }
+      ],
+      "likely_cause": "Not confirmed -- most likely an ElevenLabs automatic-dubbing translation/generation failure for these specific spans (hallucinated or mis-routed English output), rather than an STT error, since both spans are long, grammatical, unrelated-to-context English sentences rather than a plausible mishearing of Korean phonemes.",
+      "recommendation": "This is a genuine 'original English dialogue audible' / language-purity defect as defined in the QA requirements, not just an accent or pacing concern. Recommend treating A_KO v2 as NOT ready for the same approval given to A_DE v2 without either a full re-dub or manual patching of these two spans, pending your listen and decision."
+    },
+    "english_leakage_keyword_heuristic_raw_hits": ["with","is","when","your","you","the"],
+    "heuristic_note": "These 6 raw keyword hits are exactly the words inside the two English sentences documented above -- the heuristic and the manual inspection agree; this is not a false positive like the German 'was' case."
+  },
+  "perceptual_quality": {
+    "status": "NOT_EVALUATED_BY_CLAUDE",
+    "note": "Not auto-declared PASS. Human listening review required. Unlike A_DE and A_FR, this locale has a flagged objective defect (see ENGLISH_LEAKAGE_FINDING) that a listen should specifically verify, independent of general pronunciation/cadence quality."
+  },
+  "scope_confirmation": {
+    "fal_ai_lip_sync_applied": false, "challenger_B_or_C_touched": false,
+    "final_A_KO_overwritten": false, "chatterbox_higgsfield_replicate_heygen_used": false
+  }
+}

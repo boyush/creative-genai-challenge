@@ -1,0 +1,258 @@
+{
+  "source_file": "input/winner_01.mp4",
+  "inspection_method": "ffprobe technical validation + ffmpeg full decode integrity check + ffmpeg scene-detection (thresholds 0.35 and 0.12) + manual visual review of 30+ extracted frames. No speech-to-text/transcription service was called (avoided per no-paid-services constraint); on-screen caption text was read visually and is denoted as such below, not as a verified audio transcript.",
+  "technical_validation": {
+    "container": "mp4 (QuickTime/MOV, mp42/mp41)",
+    "duration_seconds": 59.0,
+    "video_codec": "h264 (avc1, Main profile, level 41)",
+    "resolution": "1080x1920",
+    "aspect_ratio": "9:16",
+    "fps": 30,
+    "pix_fmt": "yuv420p",
+    "video_bitrate_bps": 14477599,
+    "audio_codec": "aac (LC)",
+    "audio_sample_rate": 48000,
+    "audio_channels": 2,
+    "decode_errors": "none (ffmpeg -f null full decode returned clean)",
+    "notes": "High bitrate for a 59s clip; consistent with a re-encoded/high-quality UGC ad export. Resolution and AR match the required output.resolution/aspect_ratio in challenger_A.json, so no reformatting is needed for reuse."
+  },
+  "persistent_overlay_elements": {
+    "legal_disclaimer": {
+      "text": "Games shown are for illustrative purposes only. The final result is not guaranteed. The amount you can obtain is subject to the rules published in the App.",
+      "visible": "bottom-of-frame, burned into video, present across nearly the entire runtime",
+      "compliance_note": "This disclaimer already covers the gameplay/earnings depictions in the source. Any reused earnings-proof or gameplay clip should carry an equivalent disclaimer forward in Challenger A to stay consistent with engineering rule #4 (no fabricated proof) and general ad-claim compliance."
+    },
+    "creator_wardrobe_continuity": "Single continuous shoot: same creator, same white/grey cap, same grey t-shirt, same rooftop restaurant booth, same oyster platter throughout 0-53.4s. This constrains re-sequencing: any reordered hook must stay within this single continuous scene to remain visually consistent (no other creator/location footage exists in this source)."
+  },
+  "candidate_segments": [
+    {
+      "id": "hook_restaurant_a",
+      "category": "restaurant_hook",
+      "in": 0.00,
+      "out": 0.70,
+      "duration": 0.70,
+      "description": "Creator at rooftop restaurant booth, oyster platter, garnishing with lemon, establishing shot.",
+      "on_screen_caption": "WE'RE AT A REALLY",
+      "confidence": "high",
+      "reusable": true
+    },
+    {
+      "id": "hook_restaurant_b",
+      "category": "restaurant_hook",
+      "in": 0.70,
+      "out": 2.67,
+      "duration": 1.97,
+      "description": "Creator reaction cut, same scene, addressing an off-camera friend.",
+      "on_screen_caption": "WHERE DID YOU EVEN",
+      "confidence": "high",
+      "reusable": true
+    },
+    {
+      "id": "hook_restaurant_c",
+      "category": "restaurant_hook",
+      "in": 2.67,
+      "out": 4.80,
+      "duration": 2.13,
+      "description": "Creator front-facing, money-bag emoji overlay, hook payoff question.",
+      "on_screen_caption": "GET THE MONEY FOR THIS? 💰",
+      "confidence": "high",
+      "reusable": true
+    },
+    {
+      "id": "earnings_proof_1",
+      "category": "earnings_payment_proof",
+      "in": 4.80,
+      "out": 6.57,
+      "duration": 1.77,
+      "description": "Real PayPal Wallet screenshot insert overlaid on creator: balance $5,14, Transfer/Add Money buttons, $0 Cashback rewards panel visible. This is genuine app-UI screen-capture, not a generated graphic.",
+      "on_screen_caption": "YOU HAD $5 IN",
+      "confidence": "high",
+      "reusable": true,
+      "notes": "Highest-value reusable asset in the source for any 'proof' beat. Only real earnings-proof screenshot in the video besides the payout-methods screen. Candidate for Challenger A hook.scene_2 (must_use_real_source_proof=true)."
+    },
+    {
+      "id": "product_reveal_1",
+      "category": "product_reveal",
+      "in": 6.57,
+      "out": 8.93,
+      "duration": 2.36,
+      "description": "Creator talking head, green FreeCash app-icon graphic overlay enters frame (brand tease).",
+      "on_screen_caption": "THIS MORNING WHILE I",
+      "confidence": "high",
+      "reusable": true
+    },
+    {
+      "id": "product_reveal_2",
+      "category": "product_reveal",
+      "in": 8.93,
+      "out": 12.50,
+      "duration": 3.57,
+      "description": "Creator continues, eyes-closed skeptical reaction, sentence builds across two caption cards.",
+      "on_screen_caption": "PLEASE DON'T TELL ME / IT'S ANOTHER ONE OF THOSE",
+      "confidence": "medium-high",
+      "reusable": true,
+      "notes": "Caption sequence read visually across 2 caption cards within one continuous shot (no hard scene cut detected here); exact word boundaries approximate."
+    },
+    {
+      "id": "hook_payoff",
+      "category": "restaurant_hook",
+      "in": 12.50,
+      "out": 16.10,
+      "duration": 3.60,
+      "description": "Creator closes the hook loop, ties back to the meal's cost.",
+      "on_screen_caption": "REACH LIKE $50 JUST TO",
+      "confidence": "high",
+      "reusable": true
+    },
+    {
+      "id": "objection_1",
+      "category": "objection_handling",
+      "in": 16.10,
+      "out": 18.90,
+      "duration": 2.80,
+      "description": "Creator, two-heads emoji then person emoji overlay, raising doubts about other reward apps (non-payment / slow payout).",
+      "on_screen_caption": "AND THEN THEY GHOST / OF THEM TAKE AGES",
+      "confidence": "high",
+      "reusable": true
+    },
+    {
+      "id": "trustpilot_social_proof",
+      "category": "trustpilot_social_proof",
+      "in": 18.90,
+      "out": 23.80,
+      "duration": 4.90,
+      "description": "Real Trustpilot review-widget screenshot, 4.7-star rating shown, with 'TRUSTPILOT' caption card; brief creator cut-in with pilot emoji.",
+      "on_screen_caption": "TRUSTPILOT",
+      "confidence": "high",
+      "reusable": true,
+      "notes": "Only third-party social-proof asset in the source."
+    },
+    {
+      "id": "gameplay_1",
+      "category": "gameplay",
+      "in": 23.80,
+      "out": 28.47,
+      "duration": 4.67,
+      "description": "Real in-app screen-capture: hero-collector/tower-defense mini-game, top HUD showing live balance ($10.02 -> $15.68), ticket count (23k), a 'Reach Arena 5' timed challenge card ($16.99), and a second gameplay clip with a 'Defeat/To Test' banner.",
+      "on_screen_caption": "SO YOU'RE BASICALLY GETTING / TO TEST",
+      "confidence": "high",
+      "reusable": true
+    },
+    {
+      "id": "gameplay_transition",
+      "category": "gameplay",
+      "in": 28.47,
+      "out": 29.50,
+      "duration": 1.03,
+      "description": "Creator cut, closing out gameplay explanation.",
+      "on_screen_caption": "AND PLAY THE GAMES OKAY",
+      "confidence": "high",
+      "reusable": true
+    },
+    {
+      "id": "objection_2_setup",
+      "category": "objection_handling",
+      "in": 29.50,
+      "out": 33.43,
+      "duration": 3.93,
+      "description": "Creator pivots to the 'how much can you actually earn' objection.",
+      "on_screen_caption": "BUT HOW MUCH ARE WE",
+      "confidence": "high",
+      "reusable": true
+    },
+    {
+      "id": "objection_2_competitor_screens",
+      "category": "objection_handling",
+      "in": 33.43,
+      "out": 38.80,
+      "duration": 5.37,
+      "description": "Real competitor-app screenshots used as comparison/objection evidence: 'Call of Dragons' ad claiming 'Play and Earn $94.99', and 'Rush Royale' with a surveys callout.",
+      "on_screen_caption": "THEY ALSO GOT SURVEYS",
+      "confidence": "high",
+      "reusable": true,
+      "notes": "Third-party competitor screenshots; reusable for objection-handling but note IP/trademark exposure of competitor names/logos if this experiment is ever externally published."
+    },
+    {
+      "id": "objection_2_close",
+      "category": "objection_handling",
+      "in": 38.80,
+      "out": 41.67,
+      "duration": 2.87,
+      "description": "Creator, skeptical tone, mocking inflated competitor earning/payout claims.",
+      "on_screen_caption": "ACTUALLY TALKING? / LIKE ACTUAL PAYPAL PAYPAL",
+      "confidence": "medium-high",
+      "reusable": true
+    },
+    {
+      "id": "payout_methods",
+      "category": "payout_methods",
+      "in": 41.67,
+      "out": 45.10,
+      "duration": 3.43,
+      "description": "Real in-app payout-methods screenshot: PayPal / Visa / Gift Cards / Bank Transfer tiles, each with a 'Withdraw Now' action, plus Apple/Amazon gift-card icons.",
+      "on_screen_caption": "BANK TRANSFER WHATEVER YOU PREFER",
+      "confidence": "high",
+      "reusable": true
+    },
+    {
+      "id": "signup_offer_setup",
+      "category": "signup_offer",
+      "in": 45.10,
+      "out": 53.40,
+      "duration": 8.30,
+      "description": "Creator VO builds urgency around a limited-time offer; calendar icon overlay reading 'JUL 17' appears at the start of this block.",
+      "on_screen_caption": "DAY WHY DIDN'T YOU / TELL ME I WANNA GAME / WITH YOU / IT'S ACTUALLY GOOD TIMING / THIS WEEK ALRIGHT I'M",
+      "confidence": "medium",
+      "reusable": true,
+      "notes": "Longest single caption-card run in the video (5 cards, no hard scene cut); the 'JUL 17' date graphic is a fixed calendar date baked into this specific edit and should NOT be reused verbatim in a new experiment without regenerating the date overlay -- flag for compose-time review."
+    },
+    {
+      "id": "cta_end_card",
+      "category": "cta_end_card",
+      "in": 53.40,
+      "out": 59.00,
+      "duration": 5.60,
+      "description": "Static branded end card: FreeCash logo + 'The Highest Paying Rewards App' tagline, 'Get paid for playing' headline, '$10 Sign Up Boost Unlocked', purple 'Get Cash now' button, App Store + Google Play badges, cash/coin graphic footer. No creator footage in this segment -- it is a design asset, not filmed.",
+      "on_screen_caption": "Get paid for playing / $10 Sign Up Boost Unlocked / Get Cash now",
+      "confidence": "high",
+      "reusable": true,
+      "notes": "This is also, functionally, the 'signup_offer' payoff (the $10 boost + CTA button live here), so it double-serves required_sections 'offer' and 'cta'."
+    }
+  ],
+  "required_sections_coverage": {
+    "hook": "covered by hook_restaurant_a/b/c + earnings_proof_1 (0.00-6.57s)",
+    "product_reveal": "covered by product_reveal_1/2 (6.57-12.50s)",
+    "objection": "covered by objection_1 (16.10-18.90s) and objection_2_setup/competitor_screens/close (29.50-41.67s)",
+    "trust_proof": "covered by trustpilot_social_proof (18.90-23.80s)",
+    "product_demo": "covered by gameplay_1/gameplay_transition (23.80-29.50s)",
+    "earnings_proof": "covered by earnings_proof_1 (4.80-6.57s)",
+    "payout_proof": "covered by payout_methods (41.67-45.10s)",
+    "offer": "covered by signup_offer_setup (45.10-53.40s) and the '$10 Sign Up Boost Unlocked' line in cta_end_card",
+    "cta": "covered by cta_end_card (53.40-59.00s)",
+    "gap_analysis": "All 9 required_sections have at least one candidate source range. No section requires net-new generated footage to be represented at all; open question is only whether individual clip durations/captions fit Challenger A's specific hook re-cut (see hook_feasibility below)."
+  },
+  "hook_feasibility": {
+    "question": "Can Challenger A's new 0-5s hook (hook_proof_timing: outcome_question -> immediate_monetary_proof) be built entirely from existing footage in winner_01.mp4?",
+    "verdict": "YES - no generated video is required for the Challenger A hook.",
+    "scene_1_outcome_question": {
+      "target": "0-2s, caption 'He paid for dinner by playing games?'",
+      "source": "hook_restaurant_a + hook_restaurant_b (0.00-2.67s), trimmed to ~2.0s",
+      "action_required": "Caption swap only (existing captions removed/replaced); trim ~0.67s off the tail. No re-shoot, no generation.",
+      "risk": "low"
+    },
+    "scene_2_immediate_monetary_proof": {
+      "target": "2-5s (3s), caption 'Apparently... yes.', must_use_real_source_proof=true",
+      "source": "earnings_proof_1 (4.80-6.57s), the real PayPal wallet screenshot, 1.77s as-is",
+      "action_required": "Caption swap ('YOU HAD $5 IN' -> 'Apparently... yes.'). Duration gap: clip is 1.77s vs 3s target. Close with a deterministic hold (freeze last frame ~1.2s) or a mild, deterministic speed ramp (~0.6x) rather than any generative fill, per engineering rule #8. This is a compose-step edit, not a blocker.",
+      "risk": "low-medium (duration fill needs a compose-time decision, but stays within deterministic ffmpeg operations)"
+    },
+    "generation_required": false,
+    "recommendation": "Proceed with reuse-only hook assembly for Challenger A. Do not request generated video for the 0-5s hook."
+  },
+  "open_items_for_user": [
+    "Challenger A's brief only defines the new hook (0-5s); sections 6-59s are assumed to carry over unchanged from winner_01 (per 'Locked Variables' in CLAUDE.md) but this has not been explicitly confirmed.",
+    "The 'JUL 17' calendar graphic in signup_offer_setup (45.10-53.40s) is a fixed date baked into the source edit -- confirm whether Challenger A should carry this date forward as-is or needs it addressed before this segment is reused.",
+    "objection_2_competitor_screens (33.43-38.80s) shows real competitor app names/logos (Call of Dragons, Rush Royale) -- confirm this is acceptable to keep in Challenger A, since it's a comparison claim against named third parties.",
+    "No transcription/speech-to-text was run (avoided per no-paid-services instruction), so all script text above is read from burned-in captions only, not verified against spoken audio."
+  ]
+}
