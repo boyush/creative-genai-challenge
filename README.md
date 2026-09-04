@@ -3,9 +3,7 @@
 A prototype creative experimentation and localization pipeline: winning
 creative -> hypothesis-driven challenger -> deterministic composition ->
 technical QA -> (optional) localization, with lineage recorded at every
-stage. See `CLAUDE.md` for the product brief and engineering rules, and
-`reports/SUBMISSION_AUDIT.md` for a dated, read-only audit of exactly what
-has been built and what hasn't.
+stage. See `reports/WORKFLOW_SKETCH.md` for the workflow architecture and `reports/SUBMISSION_AUDIT.md` for a dated audit of exactly what has been built and what has not.
 
 ## Prototype runtime (what exists today)
 
